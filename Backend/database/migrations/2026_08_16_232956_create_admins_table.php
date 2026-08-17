@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id') ->constrained('users') ->onDelete('cascade');
+            $table->string('code_agent')->unique();
+            $table->enum('type_admin', ['super_admin', 'gestionnaire', 'validateur']);
             $table->timestamps();
         });
     }

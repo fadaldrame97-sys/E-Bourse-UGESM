@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 #[Fillable(['nom', 'prenom','email', 'mot_de_passe','telephone','role'])]
 #[Hidden(['mot_de_passe', 'remember_token'])]
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -30,6 +31,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function etudiant(){
+
+        return $this->hasOne(Etudiant::class);
     }
 
 

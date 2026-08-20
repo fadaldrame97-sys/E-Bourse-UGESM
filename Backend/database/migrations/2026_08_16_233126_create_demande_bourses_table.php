@@ -6,20 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('demande_bourses', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('etudiant_id')->constrained('etudiants')->onDelete('cascade');
+
+            $table->string('numero_dossier')->unique();
+            $table->enum('type', ['premiere_attribution', 'renouvellement']);
+            $table->date('date_depot');
+            $table->date('date_limite')->nullable();
+            $table->enum('statut', [
+                'en_attente',
+                'incomplet',
+                'en_cours',
+                'validee',
+                'rejetee',
+            ])->default('en_attente');
+            $table->text('commentaire')->nullable();
+            $table->date('date_traitement')->nullable();
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('demande_bourses');

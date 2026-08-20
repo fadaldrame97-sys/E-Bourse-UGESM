@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('billet_retours', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('etudiant_id')->constrained('etudiants')->onDelete('cascade');
+            $table->text('motif');
+            $table->enum('type',['diplome','abandon']);
+            $table->date('date_demande');
+            $table->date('date_validation')->nullable();
+            $table->enum('statut',['en_attente','validee','refusee'])->default('en_attente');
             $table->timestamps();
         });
     }

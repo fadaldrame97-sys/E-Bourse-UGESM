@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Laravel\Sanctum\HasApiTokens;
 
 #[Fillable(['nom', 'prenom','email', 'mot_de_passe','telephone','role'])]
 #[Hidden(['mot_de_passe', 'remember_token'])]
@@ -29,4 +31,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
 }

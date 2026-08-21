@@ -27,7 +27,11 @@ class AuthService{
 
     }
 
-    if($user==='admin'?'admin':'etudiant');
+    if ($user->role === 'admin') {
+    $user->load('admin');
+     } else {
+    $user->load('etudiant');
+    }
 
  
     $token=$user->createToken('e-boursToken')->plainTextToken;

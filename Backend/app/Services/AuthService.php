@@ -23,13 +23,14 @@ class AuthService{
     if(!Hash::check($password ,$user->password)){
 
         throw ValidationException::withMessages([
-        'email'=>['Identifiants incorrects']);
+        'email'=>['Identifiants incorrects']]);
 
     }
 
     if($user==='admin'?'admin':'etudiant');
 
-
+ 
+    $token=$user->createToken('e-boursToken')->plainTextToken;
 
    }
 

@@ -14,4 +14,12 @@ class BilletRetour extends Model
     'date_validation',
     'statut',
 ];
+
+protected function casts(): array
+{
+    return [
+        'date_demande' => 'date',
+        'date_validation' => 'date',
+    ];
+}
 }

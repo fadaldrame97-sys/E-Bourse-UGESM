@@ -10,9 +10,17 @@ class AuthService{
 
    public function login(string $email, string $password){
 
-      $user=User::where('email',$email)->first();
+    $user=User::where('email',$email)->first();
 
-      if($user==='admin'?'admin':'etudiant');
+    if(!$user){
+
+    throw ValidationException::withMessages([
+        'email'=>['Identifiants incorrects']
+
+    ]);
+    }
+
+    if($user==='admin'?'admin':'etudiant');
 
 
 

@@ -16,4 +16,13 @@ class DemandeBourse extends Model
     'commentaire',
     'date_traitement',
 ];
+
+protected function casts(): array
+{
+    return [
+        'date_depot' => 'date',
+        'date_limite' => 'date',
+        'date_traitement' => 'date',
+    ];
+}
 }

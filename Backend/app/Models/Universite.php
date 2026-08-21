@@ -10,4 +10,8 @@ class Universite extends Model
     'nom',
     'ville',
 ];
+
+public function etudiants(){
+    return $this->hasMany(Etudiant::class);
+}
 }

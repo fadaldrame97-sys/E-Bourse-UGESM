@@ -16,4 +16,19 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
+
+public function isSuperAdmin(): bool
+{
+    return $this->type_admin === 'super_admin';
+}
+
+public function isGestionnaire(): bool
+{
+    return $this->type_admin === 'gestionnaire';
+}
+
+public function isValidateur(): bool
+{
+    return $this->type_admin === 'validateur';
+}
 }

@@ -22,4 +22,8 @@ protected function casts(): array
         'date_validation' => 'date',
     ];
 }
+public function etudiant()
+{
+    return $this->belongsTo(Etudiant::class);
+}
 }

@@ -12,7 +12,9 @@ class AuthService{
 
       $user=User::where('email',$email)->first();
 
-      
+      if($user==='admin'?'admin':'etudiant');
+
+
 
    }
 

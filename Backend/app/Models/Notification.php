@@ -21,6 +21,11 @@ protected $fillable = [
     ];
 }
 
+public function etudiant()
+{
+    return $this->belongsTo(Etudiant::class);
+}
+
 public function reference()
 {
     if ($this->type === 'demande_bourse') {

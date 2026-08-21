@@ -32,6 +32,12 @@ class AuthService{
  
     $token=$user->createToken('e-boursToken')->plainTextToken;
 
+    return [
+        'User'=>$user,
+        'Token'=>$token
+
+    ];
+
    }
 
 }

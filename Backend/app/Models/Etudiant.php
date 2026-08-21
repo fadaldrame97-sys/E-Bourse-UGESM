@@ -44,9 +44,9 @@ public function demandeBourses()
     return $this->hasMany(DemandeBourse::class);
 }
 
-public function billetRetours()
+public function billetRetour()
 {
-    return $this->hasMany(BilletRetour::class);
+    return $this->hasOne(BilletRetour::class);
 }
 
 public function notifications()

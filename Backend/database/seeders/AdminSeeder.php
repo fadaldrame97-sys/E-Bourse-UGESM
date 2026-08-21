@@ -13,8 +13,8 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'nom' => 'Ndiaye',
-                'prenom' => 'Super',
+                'nom' => 'Dramé',
+                'prenom' => 'Fadal',
                 'email' => 'superadmin@ebourse.sn',
                 'code_agent' => 'ADM-001',
                 'type_admin' => 'super_admin',

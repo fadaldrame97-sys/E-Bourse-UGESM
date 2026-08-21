@@ -25,4 +25,14 @@ protected function casts(): array
         'date_traitement' => 'date',
     ];
 }
+
+public function etudiant()
+{
+    return $this->belongsTo(Etudiant::class);
+}
+
+public function documents()
+{
+    return $this->hasMany(Document::class);
+}
 }

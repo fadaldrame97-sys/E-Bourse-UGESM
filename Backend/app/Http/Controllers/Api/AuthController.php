@@ -5,9 +5,9 @@ use App\Http\Requests\Auth\LoginRequest;
 
 use Illuminate\Http\Request;
 use App\Services\AuthService;
-use Illuminate\Routing\Controller;
 
-class AuthController extends Controller
+
+class AuthController 
 {
     protected $authService;
 
@@ -29,8 +29,12 @@ class AuthController extends Controller
        
     }
 
-    public function Logout(Request $request){
+    public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message'=>'Vous etes déconectés!',
+        ]);
 
     }
 

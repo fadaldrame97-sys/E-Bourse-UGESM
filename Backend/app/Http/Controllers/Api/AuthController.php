@@ -22,7 +22,10 @@ class AuthController extends Controller
         $password = $request->validated('password');
 
         $result = $this->authService->login($email, $password);
-
+         return response()->json([
+            'user' => $result['User'],
+            'token' => $result['Token'],
+        ]);
        
     }
 

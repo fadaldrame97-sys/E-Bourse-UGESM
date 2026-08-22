@@ -15,4 +15,15 @@ class AuthController extends Controller
          $this->authService = $authService;
 
     }
+
+        public function login(LoginRequest $request)
+    {
+        $email = $request->validated('email');
+        $password = $request->validated('password');
+
+        $result = $this->authService->login($email, $password);
+
+       
+    }
+
 }

@@ -24,6 +24,10 @@ class DemandeBourseService
         $demandeActive=DemandeBourse::where('etudiant_id', $etudiant->id)
                         ->whereIn('statut',['en_attente','incomplet','en_cours'])->first();
 
+        if($demandeActive) {
+            throw new \Exception('Vous déja une demande active');
+        }                
+
         $numeroDossier = $this->genererNumeroDossier();
 
         return DemandeBourse::create([

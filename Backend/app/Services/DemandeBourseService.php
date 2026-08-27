@@ -12,7 +12,11 @@ class DemandeBourseService
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-    public function store( array $data){
-        
-    }
+    public function store( Request $request){
+
+        $data=$request->validate([
+            'type'=>'required|in:premiere_attribution,renouvellement',
+        ]);
+
+    }   
 }

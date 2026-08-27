@@ -17,9 +17,9 @@ class DemandeBourseService
         $user = Auth::user();
         $etudiant = $user->etudiant;
 
-        //if (!$etudiant) {
-            //throw new \Exception('Seul un étudiant peut créer une demande de bourse.');
-        //}
+        if (!$etudiant) {
+            throw new \Exception('Seul un étudiant peut créer une demande de bourse.');
+        }
 
         $demandeActive=DemandeBourse::where('etudiant_id', $etudiant->id)
                         ->whereIn('statut',['en_attente','incomplet','en_cours'])->first();

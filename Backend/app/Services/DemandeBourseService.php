@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\DemandeBourse;
+use Illuminate\Support\Facades\Auth;
 
 class DemandeBourseService
 {

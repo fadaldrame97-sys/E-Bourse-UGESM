@@ -33,6 +33,8 @@ class DemandeBourseService
     }   public function genrererNumeroDossier(){
             
             $totaleDossiers=DemandeBourse::count();
+
+            $numero=$totaleDossiers +1;
     }
 
 }

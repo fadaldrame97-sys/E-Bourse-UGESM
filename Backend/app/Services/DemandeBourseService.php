@@ -12,14 +12,14 @@ class DemandeBourseService
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-
-    
-    
-      public function create(array $data)
+    public function create(array $data)
     {
         $user = Auth::user();
-
         $etudiant = $user->etudiant;
+
+        if (!$etudiant) {
+            throw new \Exception('Seul un étudiant peut créer une demande de bourse.');
+        }
 
         $numeroDossier = $this->genererNumeroDossier();
 
@@ -31,4 +31,5 @@ class DemandeBourseService
             'statut' => 'en_attente',
         ]);
     }
+
 }

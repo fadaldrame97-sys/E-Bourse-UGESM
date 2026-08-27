@@ -31,7 +31,8 @@ class DemandeBourseService
             'statut' => 'en_attente',
         ]);
     }   public function genrererNumeroDossier(){
-        
+            
+            $totaleDossiers=DemandeBourse::count();
     }
 
 }

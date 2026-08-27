@@ -30,6 +30,8 @@ class DemandeBourseService
             'date_depot' => now(),
             'statut' => 'en_attente',
         ]);
+    }   public function genrererNumeroDossier(){
+        
     }
 
 }

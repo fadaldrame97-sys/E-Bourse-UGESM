@@ -7,9 +7,11 @@ use App\Services\DemandeBourseService;
 
 class DemandeBourseController
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $demandeBourseService;
+
+     public function __construct(DemandeBourseService $demandeBourseService){
+    $this->demandeBourseService = $demandeBourseService;
+    }
     public function index()
     {
         //
@@ -23,7 +25,7 @@ class DemandeBourseController
         $data=$request->validate([
             'type'=>'required|in:premiere_attribution,renouvellement',
         ]);
-        $demande=$this->DemandeBourseService->create($data);
+        $demande=$this->demandeBourseService->create($data);
 
           return response()->json([
         'message' => 'Demande de bourse créée avec succès',

@@ -30,11 +30,13 @@ class DemandeBourseService
             'date_depot' => now(),
             'statut' => 'en_attente',
         ]);
-    }   public function genrererNumeroDossier(){
+    }   public function genererNumeroDossier(){
             
             $totaleDossiers=DemandeBourse::count();
 
             $numero=$totaleDossiers +1;
+
+            return 'EB-' . str_pad($numero,5,'0',STR_PAD_LEFT);
     }
 
 }

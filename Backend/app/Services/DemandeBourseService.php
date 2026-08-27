@@ -12,19 +12,7 @@ class DemandeBourseService
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-    public function store( Request $request){
 
-        $data=$request->validate([
-            'type'=>'required|in:premiere_attribution,renouvellement',
-        ]);
-        $demande=$this->DemandeBourseService->create($data);
-
-          return response()->json([
-        'message' => 'Demande de bourse créée avec succès',
-        'demande' => $demande
-    ], 201);
-
-    }
     
     
       public function create(array $data)

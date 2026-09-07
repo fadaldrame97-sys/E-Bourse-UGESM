@@ -18,10 +18,10 @@ function Accueil() {
          
           <div className="w-11 h-11 rounded-xl bg-[#F1EFE8] border-2 border-dashed border-[#B4B2A9] flex items-center justify-center text-[10px] text-[#5F5E5A] text-center leading-tight">
            <img
-  src={logoUgesm}
-  alt="Logo ugesm"
-  className=""
-/>
+                src={logoUgesm}
+                alt="Logo ugesm"
+                className=""
+                />
           </div>
           <div>
             <div className="font-bold text-lg text-[#2C2C2A]">E-Bourse</div>
@@ -65,9 +65,15 @@ function Accueil() {
           </div>
         </div>
 
-        <div className="flex-1 h-[340px] bg-[#F1EFE8] border-2 border-dashed border-[#B4B2A9] rounded-[20px] flex flex-col items-center justify-center text-[#5F5E5A] text-sm text-center shadow-[0_12px_32px_rgba(0,0,0,0.06)]">
-          <div className="text-4xl mb-2">📷</div>
-          Photo de deux étudiants<br />(à ajouter)
+        <div className="flex-1 h-[220px] bg-[#F1EFE8] border-2 border-dashed border-[#B4B2A9] rounded-[20px] flex flex-col items-center justify-center text-[#5F5E5A] text-sm text-center shadow-[0_12px_32px_rgba(0,0,0,0.06)]">
+         
+          
+            <img
+                src={photoEtudiants}
+                alt="Logo ugesm"
+                className=""
+                />
+
         </div>
       </section>
 

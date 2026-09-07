@@ -1,2 +1,2 @@
-import photoEtudiants from '../assets/photo-etudiants.jpg';
-import logoUgesm from '../assets/logo-ugesm.png';
+import photoEtudiants from '../assets/etudiants.jpeg';
+import logoUgesm from '../assets/logo-ugesm.jpeg';

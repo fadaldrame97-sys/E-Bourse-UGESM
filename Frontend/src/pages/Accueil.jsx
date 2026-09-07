@@ -71,7 +71,7 @@ function Accueil() {
             <img
                 src={photoEtudiants}
                 alt="Logo ugesm"
-                className=""
+                className="flex-1 h-[220px] bg-[#F1EFE8] border-2 border-dashed border-[#B4B2A9] rounded-[20px] flex flex-col items-center justify-center text-[#5F5E5A] text-sm text-center shadow-[0_12px_32px_rgba(0,0,0,0.06)]"
                 />
 
         </div>

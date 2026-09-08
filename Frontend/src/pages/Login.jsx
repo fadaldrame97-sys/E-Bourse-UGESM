@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import api from "../api/axios";
 
@@ -6,6 +7,8 @@ function Login(){
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
     const [erreur, setErreur]=useState('');
+
+    const navigate = useNavigate();
 
     function gererConnexion(e){
 

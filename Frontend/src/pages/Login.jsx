@@ -16,15 +16,20 @@ function Login(){
         setErreur();
 
         api.post('/login',{email:email, password:password})
-        .then(function(reponse){
-            console.log('connexion réussi',reponse.data);
+        .then(function (reponse) {
+                console.log("connexion réussie", reponse.data);
 
-            const token= reponse.data.token;
+                const token = reponse.data.token;
 
-            localStorage.setItem('token', token);
+                localStorage.setItem("token", token);
 
-           navigate("/dashboard");
-        })
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify(reponse.data.user)
+                );
+
+                navigate("/dashboard");
+            })
 
         .catch(function (error) {
        

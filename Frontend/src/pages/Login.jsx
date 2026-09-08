@@ -23,7 +23,7 @@ function Login(){
 
             localStorage.setItem('token', token);
 
-             navigate("/DashboardEtudiant");
+           navigate("/dashboard");
         })
 
         .catch(function (error) {

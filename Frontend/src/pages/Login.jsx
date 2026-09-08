@@ -70,7 +70,7 @@ function Login(){
           <button
             type="submit"
             className="bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold mt-1 disabled:opacity-60"
-          >
+          > Se connecter
          
           </button>
         </form>

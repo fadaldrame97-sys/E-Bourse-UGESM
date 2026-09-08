@@ -21,6 +21,16 @@ function Login(){
             localStorage.setItem('token', token);
         })
 
+        .catch(function (error) {
+       
+
+        if (error.response && error.response.data && error.response.data.message) {
+          setErreur(error.response.data.message);
+        } else {
+          setErreur('Une erreur est survenue. Réessayez.');
+        }
+      });
+
     }
 
 }

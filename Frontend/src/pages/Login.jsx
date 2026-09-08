@@ -5,4 +5,15 @@ function Login(){
 
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
+    const [erreur, setErreur]=useState('');
+
+    function gererConnexion(e){
+
+        e.preventDefault();
+        setErreur();
+
+        api.post('/login',{email:email, password:password})
+
+    }
+
 }

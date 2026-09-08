@@ -22,6 +22,8 @@ function Login(){
             const token= reponse.data.token;
 
             localStorage.setItem('token', token);
+
+             navigate("/DashboardEtudiant");
         })
 
         .catch(function (error) {

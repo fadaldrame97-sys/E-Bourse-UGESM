@@ -69,10 +69,9 @@ function Login(){
 
           <button
             type="submit"
-            disabled={chargement}
             className="bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold mt-1 disabled:opacity-60"
           >
-            {chargement ? 'Connexion...' : 'Se connecter'}
+         
           </button>
         </form>
 

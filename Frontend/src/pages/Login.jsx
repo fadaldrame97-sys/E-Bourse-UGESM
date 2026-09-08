@@ -17,6 +17,8 @@ function Login(){
             console.log('connexion réussi',reponse.data);
 
             const token= reponse.data.token;
+
+            localStorage.setItem('token', token);
         })
 
     }

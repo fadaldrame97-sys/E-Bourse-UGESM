@@ -14,7 +14,9 @@ function Login(){
 
         api.post('/login',{email:email, password:password})
         .then(function(reponse){
-            console.log('connexion réussi',reponse.data)
+            console.log('connexion réussi',reponse.data);
+
+            const token= reponse.data.token;
         })
 
     }

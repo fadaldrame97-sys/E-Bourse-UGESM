@@ -65,6 +65,10 @@ function Login(){
             required
           />
 
+           {erreur && (
+            <p className="text-sm text-red-600">{erreur}</p>
+          )}
+
 
 
 

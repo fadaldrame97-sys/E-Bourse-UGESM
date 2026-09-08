@@ -13,6 +13,9 @@ function Login(){
         setErreur();
 
         api.post('/login',{email:email, password:password})
+        .then(function(reponse){
+            console.log('connexion réussi',reponse.data)
+        })
 
     }
 

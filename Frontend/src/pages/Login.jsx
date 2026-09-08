@@ -46,6 +46,18 @@ function Login(){
         </div>
 
 
+         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <input
+            type="email"
+            placeholder="nom@ebourse.sn"
+            value={email}
+            onChange={function (e) { setEmail(e.target.value); }}
+            className="border border-[#D3D1C7] rounded-lg px-3 py-2.5 text-sm"
+            required
+          />
+
+
+
 
 
      );

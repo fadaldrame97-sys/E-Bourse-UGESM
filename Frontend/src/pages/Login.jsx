@@ -44,7 +44,7 @@ function Login(){
           <p className="text-sm text-[#888780]">Connexion à votre espace</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={gererConnexion} className="flex flex-col gap-3">
           <input
             type="email"
             placeholder="nom@ebourse.sn"

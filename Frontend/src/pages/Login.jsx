@@ -56,6 +56,16 @@ function Login(){
             required
           />
 
+           <input
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={function (e) { setPassword(e.target.value); }}
+            className="border border-[#D3D1C7] rounded-lg px-3 py-2.5 text-sm"
+            required
+          />
+
+
 
 
 

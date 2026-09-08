@@ -32,21 +32,19 @@ function Login(){
 
     }
 
-     return (
-        
-            <div className="min-h-screen bg-[#FDF6F3] flex items-center justify-center px-4">
+    return (
+    <div className="min-h-screen bg-[#FDF6F3] flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.05)] p-8 w-full max-w-sm">
 
         <div className="flex flex-col items-center mb-6">
           <div className="w-12 h-12 rounded-xl bg-[#D85A30] flex items-center justify-center mb-4">
-        </div></div> <span className="text-[#FAECE7] text-xl">🎓</span>
+            <span className="text-[#FAECE7] text-xl">🎓</span>
           </div>
           <p className="font-semibold text-base">E-Bourse</p>
           <p className="text-sm text-[#888780]">Connexion à votre espace</p>
         </div>
 
-
-         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="email"
             placeholder="nom@ebourse.sn"
@@ -56,7 +54,7 @@ function Login(){
             required
           />
 
-           <input
+          <input
             type="password"
             placeholder="Mot de passe"
             value={password}
@@ -65,15 +63,22 @@ function Login(){
             required
           />
 
-           {erreur && (
+          {erreur && (
             <p className="text-sm text-red-600">{erreur}</p>
           )}
 
+          <button
+            type="submit"
+            disabled={chargement}
+            className="bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold mt-1 disabled:opacity-60"
+          >
+            {chargement ? 'Connexion...' : 'Se connecter'}
+          </button>
+        </form>
 
-
-
-
-
-     );
-
+      </div>
+    </div>
+  );
 }
+
+export default Login;

@@ -27,12 +27,14 @@ function DashboardEtudiant(){
     );
 
 
-    if (!utilisateur && !erreur) { 
-      return ( 
-      <div className="min-h-screen bg-[#FDF6F3] flex items-center justify-center"> 
-         <p>Chargement...</p>
-       </div> ); }
+ 
   }
+
+
+        if (!utilisateur) { 
+      return ( <div className="min-h-screen bg-[#FDF6F3] flex items-center justify-center">
+       <p>Chargement...</p> 
+       </div> ); }
 
   const etudiant=utilisateur.etudiant;
 

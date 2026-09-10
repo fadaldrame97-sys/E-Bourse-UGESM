@@ -8,4 +8,11 @@ function DashboardEtudiant(){
   const [erreur, setErreur]= useState('');
 
   const navigate=useNavigate();
+
+
+  useEffect(()=>{
+    api.get('/me').then(function(res){
+      setUtilisateur(res.data.user);
+    });
+  },[]);
 }

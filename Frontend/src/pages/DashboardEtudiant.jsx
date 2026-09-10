@@ -31,10 +31,15 @@ function DashboardEtudiant(){
 
       if (etudiant.statut_bourse === 'actif') {
     couleurStatut = 'bg-[#EAF3DE] text-[#27500A]';
-}  
+  }  
 
      else if (etudiant.statut_bourse === 'suspendu') {
     couleurStatut = 'bg-red-100 text-red-700';
   }
+
+     else if (etudiant.statut_bourse === 'termine') {
+    couleurStatut = 'bg-gray-100 text-gray-700';
+  }
+
 
 }

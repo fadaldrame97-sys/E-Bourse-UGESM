@@ -24,4 +24,6 @@ function DashboardEtudiant(){
       </div>
     );
   }
+
+  const etudiant=utilisateur.etudiant;
 }

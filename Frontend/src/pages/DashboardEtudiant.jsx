@@ -27,5 +27,10 @@ function DashboardEtudiant(){
 
   const etudiant=utilisateur.etudiant;
 
-    let couleurStatut = 'bg-gray-100 text-gray-700';
+  let couleurStatut = 'bg-gray-100 text-gray-700';
+
+      if (etudiant.statut_bourse === 'actif') {
+    couleurStatut = 'bg-[#EAF3DE] text-[#27500A]';
+}
+
 }

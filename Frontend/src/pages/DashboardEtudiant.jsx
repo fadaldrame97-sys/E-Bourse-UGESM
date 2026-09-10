@@ -6,4 +6,6 @@ function DashboardEtudiant(){
 
   const [utilisateur, setUtilisateur]=useState(null);
   const [erreur, setErreur]= useState('');
-};
+
+  const navigate=useNavigate();
+}

@@ -25,6 +25,13 @@ function DashboardEtudiant(){
         <p className="text-red-600">{erreur}</p>
       </div>
     );
+
+
+    if (!utilisateur && !erreur) { 
+      return ( 
+      <div className="min-h-screen bg-[#FDF6F3] flex items-center justify-center"> 
+         <p>Chargement...</p>
+       </div> ); }
   }
 
   const etudiant=utilisateur.etudiant;

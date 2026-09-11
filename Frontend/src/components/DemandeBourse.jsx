@@ -120,5 +120,12 @@ function DemandeBourse(){
 
             </form>
 
+            </div>
+
+      </div>
+    </div>
+
   );
 }
+
+export default DemandeBourse;

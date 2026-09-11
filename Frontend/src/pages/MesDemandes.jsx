@@ -18,7 +18,12 @@ function MesDemandes(){
         setDemandes(res.data.demandes);
     })
 
-    
+    .catch(function (error) {
+        setErreur('Impossible de charger vos demandes.');
+       
+      });
+
+
    },[]);
 
 }

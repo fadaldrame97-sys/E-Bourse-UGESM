@@ -16,7 +16,9 @@ class DemandeBourseController
     {
         $demandes=$this->demandeBourseService->mesDemandes();
 
-        return response()->json($demandes);
+        return response()->json([
+        'demandes' => $demandes,
+    ]);
 
     }
 

@@ -47,7 +47,11 @@ class DemandeBourseService
     }
 
     public function mesDemandes(){
+
+
+        $user=Auth::user();
         
+
     }
 
 }

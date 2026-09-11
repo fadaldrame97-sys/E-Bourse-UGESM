@@ -36,4 +36,8 @@ function DemandeBourse(){
       });
   }
 
+
+  let classeBoutonPremiere = 'flex-1 border border-[#D3D1C7] rounded-xl p-4 text-center';
+  let classeBoutonRenouvellement = 'flex-1 border border-[#D3D1C7] rounded-xl p-4 text-center';
+
 }

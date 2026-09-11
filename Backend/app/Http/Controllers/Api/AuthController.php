@@ -38,4 +38,19 @@ class AuthController
 
     }
 
+    public function me(Request $request)
+{
+    $user = $request->user();
+
+    if ($user->role === 'admin') {
+        $user->load('admin');
+    } else {
+        $user->load('etudiant');
+    }
+
+    return response()->json([
+        'user' => $user,
+    ]);
+}
+
 }

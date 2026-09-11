@@ -14,7 +14,10 @@ class DemandeBourseController
     }
     public function index()
     {
-        //
+        $demandes=$this->demandeBourseService->mesDemandes();
+
+        return response()->json($demandes);
+
     }
 
     /**

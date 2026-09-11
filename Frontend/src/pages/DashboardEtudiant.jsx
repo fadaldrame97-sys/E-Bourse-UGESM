@@ -81,6 +81,13 @@ function DashboardEtudiant(){
             </span>
           </div>
 
+          <button
+              onClick={function () { navigate('/nouvelle-demande'); }}
+              className="mt-4 w-full bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold"
+            >
+              Nouvelle demande de bourse
+          </button>
+
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <p className="text-[#888780]">Matricule</p>

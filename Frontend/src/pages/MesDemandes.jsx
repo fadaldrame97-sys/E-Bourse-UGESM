@@ -11,4 +11,14 @@ function MesDemandes(){
 
    const navigate = useNavigate();
 
+
+   useEffect(()=>{
+    api.get('/demandes-bourse')
+    .then(function(res){
+        setDemandes(res.data.demandes);
+    })
+
+    
+   },[]);
+
 }

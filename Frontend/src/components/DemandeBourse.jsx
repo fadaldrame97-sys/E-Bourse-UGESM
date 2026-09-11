@@ -88,6 +88,26 @@ function DemandeBourse(){
               </button>
             </div>
 
+
+            <label>Passeport</label>
+
+                <input
+                    type="file"
+                    onChange={function (e) {
+                        setPasseport(e.target.files[0]);
+                    }}
+                />
+
+
+                <label>Attestation d'inscription</label>
+
+                <input
+                    type="file"
+                    onChange={function (e) {
+                        setAttestation(e.target.files[0]);
+                    }}
+                />
+
             </form>
 
   );

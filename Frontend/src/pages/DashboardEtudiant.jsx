@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 import api from "../api/axios";
 
 function DashboardEtudiant(){
@@ -61,16 +62,7 @@ function DashboardEtudiant(){
     <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
       <div className="max-w-2xl mx-auto">
 
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="text-sm text-[#888780]">Bonjour,</p>
-            <h1 className="text-2xl font-bold text-[#2C2C2A]">
-              {utilisateur.prenom} {utilisateur.nom}
-            </h1>
-          </div>
-
-         
-        </div>
+          <NavBar titre={"Bonjour, " + utilisateur.prenom + " " + utilisateur.nom} />
 
         <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.05)] p-6">
 

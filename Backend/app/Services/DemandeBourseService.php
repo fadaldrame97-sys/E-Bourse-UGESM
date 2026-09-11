@@ -53,6 +53,17 @@ class DemandeBourseService
         $etudiant=$user->etudiant;
 
 
+
+        if (!$etudiant) {
+            throw new \Exception('Seul un étudiant peut consulter ses demandes.');
+        }
+
+        return DemandeBourse::where('etudiant_id', $etudiant->id)
+            ->orderBy('date_depot', 'desc')
+            ->get();
     }
+
+
+    
 
 }

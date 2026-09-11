@@ -72,6 +72,28 @@ function MesDemandes(){
             <p className="text-sm text-[#888780] text-center">Aucune demande pour le moment.</p>
           </Carte>
         )}
+
+
+
+        <div className="flex flex-col gap-3">
+          {demandes.map(function (demande) {
+            return (
+              <Carte key={demande.id}>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-sm font-semibold text-[#2C2C2A]">{demande.numero_dossier}</p>
+                  <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurBadge(demande.statut)}>
+                    {demande.statut}
+                  </span>
+                </div>
+                <p className="text-sm text-[#888780]">{libelleType(demande.type)}</p>
+                <p className="text-xs text-[#888780] mt-1">Déposée le {demande.date_depot}</p>
+              </Carte>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
   );
 
 }

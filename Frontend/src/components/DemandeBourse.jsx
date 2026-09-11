@@ -108,6 +108,16 @@ function DemandeBourse(){
                     }}
                 />
 
+
+                 <label>Preuve de réuisite</label>
+
+                <input
+                    type="file"
+                    onChange={function (e) {
+                        setAttestation(e.target.files[0]);
+                    }}
+                />
+
             </form>
 
   );

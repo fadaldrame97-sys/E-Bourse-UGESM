@@ -63,7 +63,7 @@ function DemandeBourse(){
 
 
 
-               <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.05)] p-6">
+        <Carte>    
 
           <h1 className="text-lg font-semibold text-[#2C2C2A] mb-1">Nouvelle demande</h1>
           <p className="text-sm text-[#888780] mb-6">Choisissez le type de dossier</p>
@@ -120,7 +120,7 @@ function DemandeBourse(){
 
             </form>
 
-            </div>
+           </Carte>
 
       </div>
     </div>

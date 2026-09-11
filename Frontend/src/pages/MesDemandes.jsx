@@ -62,6 +62,16 @@ function MesDemandes(){
                 </button>
 
 
+                 <h1 className="text-xl font-bold text-[#2C2C2A] mb-6">Mes demandes de bourse</h1>
+
+                  {erreur && ( <p className="text-sm text-red-600">{erreur}</p>  )}
+
+
+        { !erreur && demandes.length === 0 && (
+          <Carte>
+            <p className="text-sm text-[#888780] text-center">Aucune demande pour le moment.</p>
+          </Carte>
+        )}
   );
 
 }

@@ -50,7 +50,8 @@ class DemandeBourseService
 
 
         $user=Auth::user();
-        
+        $etudiant=$user->etudiant;
+
 
     }
 

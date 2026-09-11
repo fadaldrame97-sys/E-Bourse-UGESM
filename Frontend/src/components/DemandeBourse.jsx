@@ -58,10 +58,37 @@ function DemandeBourse(){
           onClick={function () { navigate('/dashboard'); }}
           className="text-sm text-[#888780] mb-6"
         >
-          ← Retour au tableau de bord
+          Retour au tableau de bord
         </button>
 
 
+
+               <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.05)] p-6">
+
+          <h1 className="text-lg font-semibold text-[#2C2C2A] mb-1">Nouvelle demande</h1>
+          <p className="text-sm text-[#888780] mb-6">Choisissez le type de dossier</p>
+
+          <form onSubmit={gererDemande}>
+
+            <div className="flex gap-3 mb-6">
+              <button
+                type="button"
+                onClick={function () { setType('premiere_attribution'); }}
+                className={classeBoutonPremiere}
+              >
+                <p className="text-sm font-semibold">Première attribution</p>
+              </button>
+
+              <button
+                type="button"
+                onClick={function () { setType('renouvellement'); }}
+                className={classeBoutonRenouvellement}
+              >
+                <p className="text-sm font-semibold">Renouvellement</p>
+              </button>
+            </div>
+
+            </form>
 
   );
 }

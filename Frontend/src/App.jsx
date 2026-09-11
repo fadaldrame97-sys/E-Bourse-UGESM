@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Accueil from "./pages/Accueil";
 import Login from "./pages/Login";
 import DashboardEtudiant from "./pages/DashboardEtudiant";
-import DemandeBourse from "./pages/DemandeBourse";
+import DemandeBourse from "./components/DemandeBourse";
 
 function App() {
   return (

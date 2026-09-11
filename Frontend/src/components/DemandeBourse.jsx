@@ -40,4 +40,28 @@ function DemandeBourse(){
   let classeBoutonPremiere = 'flex-1 border border-[#D3D1C7] rounded-xl p-4 text-center';
   let classeBoutonRenouvellement = 'flex-1 border border-[#D3D1C7] rounded-xl p-4 text-center';
 
+
+   if (type === 'premiere_attribution') {
+    classeBoutonPremiere = 'flex-1 border-2 border-[#D85A30] rounded-xl p-4 text-center';
+  }
+
+  if (type === 'renouvellement') {
+    classeBoutonRenouvellement = 'flex-1 border-2 border-[#D85A30] rounded-xl p-4 text-center';
+  }
+
+  return(
+
+        <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
+      <div className="max-w-lg mx-auto">
+
+        <button
+          onClick={function () { navigate('/dashboard'); }}
+          className="text-sm text-[#888780] mb-6"
+        >
+          ← Retour au tableau de bord
+        </button>
+
+
+
+  );
 }

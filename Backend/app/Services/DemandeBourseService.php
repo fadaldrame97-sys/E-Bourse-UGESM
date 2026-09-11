@@ -46,4 +46,8 @@ class DemandeBourseService
             return 'EB-' . str_pad($numero,5,'0',STR_PAD_LEFT);
     }
 
+    public function mesDemandes(){
+        
+    }
+
 }

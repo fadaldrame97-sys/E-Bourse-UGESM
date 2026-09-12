@@ -43,10 +43,10 @@ function DemandeBourse(){
        
         setSucces('Demande créée avec succès ! Numéro de dossier : ' + reponse.data.demande.numero_dossier);
       })
-      .catch(function (error) {
-        setChargement(false);
-
-        if (error.response && error.response.data && error.response.data.message) {
+     .catch(function (error) {
+        if (error.response && error.response.status === 422) {
+          setErreur('Veuillez remplir tous les champs et joindre tous les documents requis.');
+        } else if (error.response && error.response.data && error.response.data.message) {
           setErreur(error.response.data.message);
         } else {
           setErreur('Une erreur est survenue. Réessayez.');

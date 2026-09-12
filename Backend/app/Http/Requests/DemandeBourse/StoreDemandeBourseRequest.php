@@ -2,28 +2,22 @@
 
 namespace App\Http\Requests\DemandeBourse;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreDemandeBourseRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'type' => ['required', 'in:premiere_attribution,renouvellement'],
+            'passeport' => ['required', 'file', 'max:5120'],
+            'attestation_inscription' => ['required', 'file', 'max:5120'],
+            'attestation_reussite' => ['required', 'file', 'max:5120'],
         ];
     }
 }

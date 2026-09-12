@@ -12,8 +12,7 @@ class DemandeBourseService
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-    public function create(array $data)
-    {
+    public function create(array $data){
         $user = Auth::user();
         $etudiant = $user->etudiant;
 
@@ -37,7 +36,8 @@ class DemandeBourseService
             'date_depot' => now(),
             'statut' => 'en_attente',
         ]);
-    }   public function genererNumeroDossier(){
+    }
+      public function genererNumeroDossier(){
             
             $totaleDossiers=DemandeBourse::count();
 

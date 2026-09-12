@@ -26,19 +26,26 @@ class DemandeBourseController
     /**
      * Store a newly created resource in storage.
      */
-       public function store( Request $request){
+   public function store(StoreDemandeBourseRequest $request){
 
-        $data=$request->validate([
-            'type'=>'required|in:premiere_attribution,renouvellement',
-        ]);
-        $demande=$this->demandeBourseService->create($data);
+    $data = [
+        'type' => $request->validated('type'),
+    ];
 
-          return response()->json([
+    $fichiers = [
+        'passeport' => $request->file('passeport'),
+        'attestation_inscription' => $request->file('attestation_inscription'),
+        'attestation_reussite' => $request->file('attestation_reussite'),
+    ];
+
+    $demande = $this->demandeBourseService->create($data, $fichiers);
+
+    return response()->json([
         'message' => 'Demande de bourse créée avec succès',
         'demande' => $demande
     ], 201);
 
-    }
+}
 
     /**
      * Display the specified resource.

@@ -31,7 +31,14 @@ function DemandeBourse(){
 
 
     const formulaire = new FormData()
-    api.post('/demandes-bourse', { type: type })
+
+
+    formulaire.append('type', type);
+    formulaire.append('passeport', passeport);
+    formulaire.append('attestation_inscription', attestationInscription);
+    formulaire.append('attestation_reussite', attestationReussite);
+
+    api.post('/demandes-bourse', formulaire)
       .then(function (reponse) {
        
         setSucces('Demande créée avec succès ! Numéro de dossier : ' + reponse.data.demande.numero_dossier);

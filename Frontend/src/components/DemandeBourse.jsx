@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import Carte from "../components/Carte";
 
+
 function DemandeBourse(){
 
-    const [type, setType] = useState('premiere_attribution');
-    const [erreur, setErreur] = useState('');
-    const [succes, setSucces] = useState('');
+  const [type, setType] = useState('premiere_attribution');
+  const [passeport, setPasseport] = useState(null);
+  const [attestationInscription, setAttestationInscription] = useState(null);
+  const [attestationReussite, setAttestationReussite] = useState(null);
+  const [erreur, setErreur] = useState('');
+  const [succes, setSucces] = useState('');
 
 
     const navigate = useNavigate();

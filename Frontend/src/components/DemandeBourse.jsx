@@ -23,7 +23,11 @@ function DemandeBourse(){
 
     setErreur('');
     setSucces('');
-    setChargement(true);
+   
+    if (!passeport || !attestationInscription || !attestationReussite) {
+      setErreur("Veuillez sélectionner tous les justificatifs obligatoires.");
+      return;
+    }
 
     api.post('/demandes-bourse', { type: type })
       .then(function (reponse) {

@@ -145,7 +145,20 @@ function DemandeBourse(){
               />
             </label>
 
-            
+
+
+            {erreur && (
+              <p className="text-sm text-red-600">{erreur}</p>
+            )}
+
+            {succes && (
+              <p className="text-sm text-green-700">{succes}</p>
+            )}
+
+          
+            <BoutonPrimaire texte="Déposer la demande" type="submit" chargement={false} />
+
+
             </form>
 
            </Carte>

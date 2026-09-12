@@ -29,6 +29,8 @@ function DemandeBourse(){
       return;
     }
 
+
+    const formulaire = new FormData()
     api.post('/demandes-bourse', { type: type })
       .then(function (reponse) {
        

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import DemandeBourse from "../components/DemandeBourse";
 import api from "../api/axios";
 
 function DashboardEtudiant(){

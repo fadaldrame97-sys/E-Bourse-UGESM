@@ -118,14 +118,18 @@ function DemandeBourse(){
             </label>
 
 
-                <label>Attestation d'inscription</label>
 
-                <input
-                    type="file"
-                    onChange={function (e) {
-                        setAttestation(e.target.files[0]);
-                    }}
-                />
+
+
+            <label className="text-sm text-[#5F5E5A]">
+              Attestation d'inscription
+              <input
+                type="file"
+                onChange={function (e) { setAttestationInscription(e.target.files[0]); }}
+                className="block w-full mt-1 text-sm"
+                required
+              />
+            </label>
 
 
                  <label>Preuve de réuisite</label>

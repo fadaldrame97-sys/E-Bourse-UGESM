@@ -107,14 +107,15 @@ function DemandeBourse(){
             </div>
 
 
-            <label>Passeport</label>
-
-                <input
-                    type="file"
-                    onChange={function (e) {
-                        setPasseport(e.target.files[0]);
-                    }}
-                />
+            <label className="text-sm text-[#5F5E5A]">
+              Passeport
+              <input
+                type="file"
+                onChange={function (e) { setPasseport(e.target.files[0]); }}
+                className="block w-full mt-1 text-sm"
+                required
+              />
+            </label>
 
 
                 <label>Attestation d'inscription</label>

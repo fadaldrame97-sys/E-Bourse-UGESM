@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Services\DemandeBourseService;
+use App\Http\Requests\DemandeBourse\StoreDemandeBourseRequest;
 
 class DemandeBourseController
 {

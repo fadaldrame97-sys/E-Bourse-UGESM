@@ -132,15 +132,20 @@ function DemandeBourse(){
             </label>
 
 
-                 <label>Preuve de réuisite</label>
 
-                <input
-                    type="file"
-                    onChange={function (e) {
-                        setAttestation(e.target.files[0]);
-                    }}
-                />
 
+
+            <label className="text-sm text-[#5F5E5A]">
+              Preuve de réussite
+              <input
+                type="file"
+                onChange={function (e) { setAttestationReussite(e.target.files[0]); }}
+                className="block w-full mt-1 text-sm"
+                required
+              />
+            </label>
+
+            
             </form>
 
            </Carte>

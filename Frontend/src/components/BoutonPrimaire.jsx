@@ -1,7 +1,7 @@
 function BoutonPrimaire({ children, ...props }) {
   return (
     <button
-      className="bg-emerald-600 text-white rounded-xl px-5 py-2.5 font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50"
+      className="w-full bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold disabled:opacity-60"
       {...props}
     >
       {children}

@@ -13,6 +13,8 @@ class BilletRetour extends Model
     'date_demande',
     'date_validation',
     'statut',
+    'statut',
+    'preuve_diplome'
 ];
 
 protected function casts(): array

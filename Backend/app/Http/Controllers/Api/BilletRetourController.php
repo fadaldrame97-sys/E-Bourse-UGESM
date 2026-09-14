@@ -27,8 +27,7 @@ class BilletRetourController
         ], 201);
     }
 
-    public function index()
-    {
+    public function index(){
         $billets = $this->billetRetourService->mesBillets();
 
         return response()->json([

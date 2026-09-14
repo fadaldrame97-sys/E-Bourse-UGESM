@@ -157,7 +157,7 @@ function DemandeBourse(){
             )}
 
           
-            <BoutonPrimaire texte="Déposer la demande" type="submit" chargement={false} />
+            <BoutonPrimaire type="submit">Déposer la demande</BoutonPrimaire>
 
 
             </form>

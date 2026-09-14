@@ -1,16 +1,4 @@
-services:
-  db:
-    image: mysql:8.0
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: e_bourse_ugesm
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3307:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-
-  backend:
+backend:
     build: ./Backend
     restart: unless-stopped
     ports:
@@ -19,22 +7,9 @@ services:
       - db
     volumes:
       - ./Backend:/app
+      - /app/vendor
     environment:
       DB_HOST: db
       DB_DATABASE: e_bourse_ugesm
       DB_USERNAME: root
       DB_PASSWORD: root
-
-  frontend:
-    build: ./Frontend
-    restart: unless-stopped
-    ports:
-      - "5173:5173"
-    volumes:
-      - ./Frontend:/app
-      - /app/node_modules
-    depends_on:
-      - backend
-
-volumes:
-  db_data:

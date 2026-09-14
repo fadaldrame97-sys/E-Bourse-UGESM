@@ -2,47 +2,37 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use App\Services\BilletRetourService;
+use App\Http\Requests\BilletRetour\StoreBilletRetourRequest;
 
 class BilletRetourController
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $billetRetourService;
+
+    public function __construct(BilletRetourService $billetRetourService){
+        $this->billetRetourService = $billetRetourService;
+    }
+
+    public function store(StoreBilletRetourRequest $request) {
+        $data = [
+            'type' => $request->validated('type'),
+            'motif' => $request->validated('motif'),
+        ];
+
+        $billet = $this->billetRetourService->create($data);
+
+        return response()->json([
+            'message' => 'Demande de billet retour créée avec succès',
+            'billet' => $billet,
+        ], 201);
+    }
+
     public function index()
     {
-        //
-    }
+        $billets = $this->billetRetourService->mesBillets();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return response()->json([
+            'billets' => $billets,
+        ]);
     }
 }

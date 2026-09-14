@@ -25,6 +25,14 @@ class BilletRetourService{
             throw new \Exception('Vous avez déjà une demande de billet retour en cours.');
         }
 
+              return BilletRetour::create([
+            'etudiant_id' => $etudiant->id,
+            'type' => $data['type'],
+            'motif' => $data['motif'],
+            'date_demande' => now(),
+            'statut' => 'en_attente',
+        ]);
+
     }
 
 }

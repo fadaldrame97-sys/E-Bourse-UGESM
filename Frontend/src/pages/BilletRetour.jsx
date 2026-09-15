@@ -6,4 +6,7 @@ import BoutonPrimaire from "../components/BoutonPrimaire";
 
 function BilletRetour(){
 
-    const [type, setType]=useState}
+    const [type, setType]=useState('diplome');
+    const [motif, setMotif]=useState("");
+
+}

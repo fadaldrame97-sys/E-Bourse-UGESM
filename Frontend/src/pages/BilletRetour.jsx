@@ -8,5 +8,9 @@ function BilletRetour(){
 
     const [type, setType]=useState('diplome');
     const [motif, setMotif]=useState("");
+    const [diplome, setDiplome] = useState(null);
+
+    const [erreur, setErreur] = useState("");
+    const [succes, setSucces] = useState("");
 
 }

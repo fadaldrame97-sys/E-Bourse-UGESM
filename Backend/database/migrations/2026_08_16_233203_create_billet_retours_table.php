@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date_demande');
             $table->date('date_validation')->nullable();
             $table->enum('statut',['en_attente','validee','refusee'])->default('en_attente');
+            $table->string('chemin_diplome')->nullable();
             $table->timestamps();
         });
     }

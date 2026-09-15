@@ -24,6 +24,12 @@ function BilletRetour(){
 
     if(type==='diplome' && !diplome){
         setErreur('Veuillez joindre votre diplme ou attestation de réussite');
+
+        return;
+    }
+
+    if(!motif.trim()){
+        setErreur("Veuillez renseigner le motif de votre demande")
     }
 
     }

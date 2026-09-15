@@ -37,6 +37,10 @@ function BilletRetour(){
     formulaire.append("type",type);
     formulaire.append("motif",motif)
 
+    if(diplome){
+        formulaire.append("diplome",diplome);
+    }
+
     
 
     }

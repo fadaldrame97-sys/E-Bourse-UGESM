@@ -32,6 +32,10 @@ function BilletRetour(){
         setErreur("Veuillez renseigner le motif de votre demande")
     }
 
+    const formulaire=new FormData();
+
+    
+
     }
 
 }

@@ -12,11 +12,17 @@ class StoreBilletRetourRequest extends FormRequest
     }
 
     public function rules(): array
-    {
-        return [
-            'type' => ['required', 'in:diplome,abandon'],
-            'motif' => ['required', 'string'],
-            'preuve_diplome' => ['required_if:type,diplome', 'file', 'max:5120'],
-        ];
-    }
+{
+    return [
+        'type' => 'required|in:diplome,abandon',
+        'motif' => 'required|string|max:1000',
+
+        'diplome' => [
+            'required_if:type,diplome',
+            'file',
+            'mimes:pdf,jpg,jpeg,png',
+            'max:5120',
+        ],
+    ];
+}
 }

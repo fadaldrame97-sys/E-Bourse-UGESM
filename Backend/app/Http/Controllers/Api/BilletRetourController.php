@@ -9,14 +9,17 @@ class BilletRetourController
 {
     protected $billetRetourService;
 
-    public function __construct(BilletRetourService $billetRetourService){
+    public function __construct(BilletRetourService $billetRetourService)
+    {
         $this->billetRetourService = $billetRetourService;
     }
 
-    public function store(StoreBilletRetourRequest $request) {
+    public function store(StoreBilletRetourRequest $request)
+    {
         $data = [
             'type' => $request->validated('type'),
             'motif' => $request->validated('motif'),
+            'diplome' => $request->file('diplome'),
         ];
 
         $billet = $this->billetRetourService->create($data);
@@ -27,7 +30,8 @@ class BilletRetourController
         ], 201);
     }
 
-    public function index(){
+    public function index()
+    {
         $billets = $this->billetRetourService->mesBillets();
 
         return response()->json([

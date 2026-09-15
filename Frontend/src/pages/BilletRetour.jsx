@@ -34,6 +34,9 @@ function BilletRetour(){
 
     const formulaire=new FormData();
 
+    formulaire.append("type",type);
+    formulaire.append("motif",motif)
+
     
 
     }

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import DashboardEtudiant from "./pages/DashboardEtudiant";
 import DemandeBourse from "./components/DemandeBourse";
 import MesDemandes from "./pages/MesDemandes";
+import BilletRetour from "./pages/BilletRetour";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardEtudiant />} />
         <Route path="/nouvelle-demande" element={<DemandeBourse />} />
         <Route path="/mes-demandes" element={<MesDemandes />} />
+        <Route path="demandeBillet" element={<BilletRetour/>} />
       </Routes>
     </BrowserRouter>
   );

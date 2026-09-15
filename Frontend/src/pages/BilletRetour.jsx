@@ -22,6 +22,10 @@ function BilletRetour(){
     setErreur("");
     setSucces("");
 
+    if(type==='diplome' && !diplome){
+        setErreur('Veuillez joindre votre diplme ou attestation de réussite');
+    }
+
     }
 
 }

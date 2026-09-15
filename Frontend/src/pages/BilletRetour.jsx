@@ -42,8 +42,21 @@ function BilletRetour(){
     }
 
    api.post('/billets-retour', formulaire)
+   .then(function(res){
+    setSucces(res.data.message||" Votre demande est créée avec succès.");
     
+    setMotif("");
+    setDiplome(null);
 
+   })
+   .catch(function(error){
+    if(error.res && error.res.data && error.res.data.message){
+        setErreur(erreur.res.data.message);
+    }
+    else{
+       setErreur("Une erreur est survenue. Réessayez."); 
+    }
+   });
     }
 
 }

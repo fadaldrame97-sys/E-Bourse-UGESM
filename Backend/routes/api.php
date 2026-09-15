@@ -13,5 +13,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/demandes-bourse', [DemandeBourseController::class, 'index']);
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/billets-retour', [BilletRetourController::class, 'store']);
-Route::get('/billets-retour', [BilletRetourController::class, 'index']);
+    Route::get('/billets-retour', [BilletRetourController::class, 'index']);
 });

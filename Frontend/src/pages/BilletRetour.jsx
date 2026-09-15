@@ -59,4 +59,20 @@ function BilletRetour(){
    });
     }
 
+    return(
+
+        <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
+        <div className="max-w-lg mx-auto">
+
+        <button
+                onClick={function () {
+                    navigate("/dashboard");
+                }}
+                className="text-sm text-[#888780] mb-6"
+                >
+                Retour au tableau de bord
+        </button>
+
+    );
+
 }

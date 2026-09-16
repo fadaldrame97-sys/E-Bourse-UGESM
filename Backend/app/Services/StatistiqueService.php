@@ -36,4 +36,15 @@ class StatistiqueService{
          ->having('etudiants_count', '>', 0)
          ->get();
   }
+
+  public function repartitionParVille(){
+    return $this->universitesAvecEtudiantsActifs()
+        ->groupBy('ville')
+        ->map(function ($universites, $ville) {
+            return [
+                'ville' => $ville,
+                'nombre_etudiants' => $universites->sum('etudiants_count'),
+            ];
+        }) ->values();
+    }
 }

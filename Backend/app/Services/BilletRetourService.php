@@ -48,19 +48,18 @@ class BilletRetourService
         ]);
     }
 
-    public function mesBillets()
-    {
-        $user = Auth::user();
-        $etudiant = $user->etudiant;
+    public function monBillet(){
+    $user = Auth::user();
 
-        if (!$etudiant) {
-            throw new Exception(
-                'Seul un étudiant peut consulter ses billets retour.'
-            );
-        }
+    $etudiant = $user->etudiant;
 
-        return BilletRetour::where('etudiant_id', $etudiant->id)
-            ->orderBy('date_demande', 'desc')
-            ->get();
+    if (!$etudiant) {
+        throw new Exception(
+            'Seul un étudiant peut consulter son billet retour.'
+        );
     }
+
+    return BilletRetour::where('etudiant_id', $etudiant->id)
+        ->first();
+}
 }

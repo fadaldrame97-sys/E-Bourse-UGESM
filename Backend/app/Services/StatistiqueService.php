@@ -9,8 +9,17 @@ class StatistiqueService{
 
    public function resume(){
 
-    $nombreEtudiantActifs=Etudiant::where('statut_bourse','active')->count();
+    $nombreEtudiantsActifs=Etudiant::where('statut_bourse','active')->count();
      $montantMensuel = config('bourse.montant_mensuel');
+
+     return [
+            'etudiants_actifs' => $nombreEtudiantsActifs,
+            'demandes_en_attente' => DemandeBourse::where('statut', 'en_attente')->count(),
+            'demandes_validees' => DemandeBourse::where('statut', 'validee')->count(),
+            'billets_en_attente' => BilletRetour::where('statut', 'en_attente')->count(),
+            'budget_mensuel' => $nombreEtudiantsActifs * $montantMensuel,
+            'budget_annuel' => $nombreEtudiantsActifs * $montantMensuel * 12,
+        ];
 
      
    }

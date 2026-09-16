@@ -7,5 +7,8 @@ import NavBar from "../components/NavBar";
 function AdminDashboard(){
 
     const [stats,setStats]=useState(null);
+    const [admin, setAdmin]=useState(null);
+    
+    const navigate=useNavigate()
 
 }

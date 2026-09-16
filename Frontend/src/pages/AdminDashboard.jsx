@@ -29,4 +29,10 @@ function AdminDashboard(){
     const peutGerer = admin.type_admin === 'gestionnaire' || admin.type_admin === 'super_admin';
 
 
+return (
+    <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
+      <div className="max-w-2xl mx-auto">
+        <NavBar titre="Tableau de bord admin" />
+
+
 }

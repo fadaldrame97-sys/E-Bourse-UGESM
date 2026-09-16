@@ -34,5 +34,30 @@ return (
       <div className="max-w-2xl mx-auto">
         <NavBar titre="Tableau de bord admin" />
 
+        {stats && (
+  <div className="grid grid-cols-2 gap-3 mb-6">
+    <Carte>
+      <p className="text-2xl font-bold text-[#D85A30]">{stats.etudiants_actifs}</p>
+      <p className="text-xs text-[#888780]">Étudiants actifs</p>
+    </Carte>
+    <Carte>
+      <p className="text-2xl font-bold text-[#D85A30]">{stats.demandes_en_attente}</p>
+      <p className="text-xs text-[#888780]">Demandes en attente</p>
+    </Carte>
+    <Carte>
+      <p className="text-2xl font-bold text-[#D85A30]">{stats.billets_en_attente}</p>
+      <p className="text-xs text-[#888780]">Billets en attente</p>
+    </Carte>
+    {peutGerer && (
+      <Carte>
+        <p className="text-2xl font-bold text-[#D85A30]">{stats.budget_annuel} DH</p>
+        <p className="text-xs text-[#888780]">Budget annuel estimé</p>
+      </Carte>
+    )}
+  </div>
+)}
+
+
+
 
 }

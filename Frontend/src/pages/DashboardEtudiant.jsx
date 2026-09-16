@@ -73,6 +73,26 @@ function DashboardEtudiant(){
             <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurStatut}>
               {etudiant.statut_bourse}
             </span>
+          
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-[#888780]">Matricule</p>
+              <p className="text-[#2C2C2A] font-medium">{etudiant.matricule}</p>
+            </div>
+            <div>
+              <p className="text-[#888780]">Niveau d'étude</p>
+              <p className="text-[#2C2C2A] font-medium">{etudiant.niveau_etude}</p>
+            </div>
+            <div>
+              <p className="text-[#888780]">Numéro de passeport</p>
+              <p className="text-[#2C2C2A] font-medium">{etudiant.numero_passeport}</p>
+            </div>
+            <div>
+              <p className="text-[#888780]">Année d'arrivée</p>
+              <p className="text-[#2C2C2A] font-medium">{etudiant.annee_arrivee}</p>
+            </div>
+          </div>
+
           </div>
 
           <button
@@ -99,24 +119,6 @@ function DashboardEtudiant(){
                 Voir mes demandes
           </button>
 
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-[#888780]">Matricule</p>
-              <p className="text-[#2C2C2A] font-medium">{etudiant.matricule}</p>
-            </div>
-            <div>
-              <p className="text-[#888780]">Niveau d'étude</p>
-              <p className="text-[#2C2C2A] font-medium">{etudiant.niveau_etude}</p>
-            </div>
-            <div>
-              <p className="text-[#888780]">Numéro de passeport</p>
-              <p className="text-[#2C2C2A] font-medium">{etudiant.numero_passeport}</p>
-            </div>
-            <div>
-              <p className="text-[#888780]">Année d'arrivée</p>
-              <p className="text-[#2C2C2A] font-medium">{etudiant.annee_arrivee}</p>
-            </div>
-          </div>
 
         </div>
 

@@ -11,12 +11,7 @@ function Login(){
     const navigate = useNavigate();
 
 
-    if (reponse.data.user.role === 'admin') {
-      navigate("/admin/dashboard");
-    } else {
-      navigate("/dashboard");
-    }
-
+  
     function gererConnexion(e){
 
         e.preventDefault();
@@ -35,7 +30,11 @@ function Login(){
                     JSON.stringify(reponse.data.user)
                 );
 
-                navigate("/dashboard");
+            if (reponse.data.user.role === 'admin') {
+              navigate("/admin/dashboard");
+            } else {
+              navigate("/dashboard");
+            }
             })
 
         .catch(function (error) {

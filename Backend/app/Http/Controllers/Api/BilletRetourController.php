@@ -30,11 +30,11 @@ class BilletRetourController
         ], 201);
     }
 
-    public function index(){
-    $billets = $this->billetRetourService->mesBillets();
+   public function index(){
+    $billet = $this->billetRetourService->monBillet();
 
     return response()->json([
-        'billets' => $billets,
+        'billet' => $billet,
     ]);
 }
 }

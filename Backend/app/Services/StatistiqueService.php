@@ -6,5 +6,8 @@ use App\Models\DemandeBourse;
 use App\Models\BilletRetour;
 use App\Models\Universite;
 class StatistiqueService{
-    
+
+   public function resume(){
+     
+   }
 }

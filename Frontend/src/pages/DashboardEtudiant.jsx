@@ -82,18 +82,21 @@ function DashboardEtudiant(){
               Nouvelle demande de bourse
           </button>
 
-          <button
-                onClick={function () { navigate('/mes-demandes'); }}
-                className="w-full mt-2 border border-[#D3D1C7] rounded-lg py-2.5 text-sm font-semibold text-[#2C2C2A]"
-              >
-                Voir mes demandes
-          </button>
+  
 
-                    <button
+          <button
               onClick={function () { navigate('/demandeBillet'); }}
               className="mt-4 w-full bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold"
             >
               Demander un billet de retour
+          </button>
+
+
+          <button
+                onClick={function () { navigate('/mes-demandes'); }}
+                className="mt-4 w-full bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold"
+              >
+                Voir mes demandes
           </button>
 
           <div className="grid grid-cols-2 gap-4 text-sm">

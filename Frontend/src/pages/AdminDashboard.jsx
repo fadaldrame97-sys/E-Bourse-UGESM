@@ -5,5 +5,7 @@ import Carte from "../components/Carte";
 import NavBar from "../components/NavBar";
 
 function AdminDashboard(){
-    
+
+    const [stats,setStats]=useState(null);
+
 }

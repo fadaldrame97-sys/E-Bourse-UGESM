@@ -25,6 +25,8 @@ function AdminDashboard(){
   }, []);
 
 
-  const peutValider = admin.type_admin === 'validateur' || admin.type_admin === 'super_admin';
+    const peutValider = admin.type_admin === 'validateur' || admin.type_admin === 'super_admin';
+    const peutGerer = admin.type_admin === 'gestionnaire' || admin.type_admin === 'super_admin';
+
 
 }

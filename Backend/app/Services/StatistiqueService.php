@@ -8,6 +8,8 @@ use App\Models\Universite;
 class StatistiqueService{
 
    public function resume(){
+
+    $nombreEtudiantActifs=Etudiant::where('statut_bourse','active')->count();
      
    }
 }

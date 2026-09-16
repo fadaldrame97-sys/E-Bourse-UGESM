@@ -6,7 +6,6 @@ import DashboardEtudiant from "./pages/DashboardEtudiant";
 import DemandeBourse from "./components/DemandeBourse";
 import MesDemandes from "./pages/MesDemandes";
 import BilletRetour from "./pages/BilletRetour";
-import MonBilletsRetour from "./pages/MonBilletsRetour";
 
 function App() {
   return (
@@ -17,11 +16,10 @@ function App() {
         <Route path="/dashboard" element={<DashboardEtudiant />} />
         <Route path="/nouvelle-demande" element={<DemandeBourse />} />
         <Route path="/mes-demandes" element={<MesDemandes />} />
-        <Route path="demandeBillet" element={<BilletRetour/>} />
-        <Route path="/mes-demandes" element={<MonBilletsRetour />} />
+        <Route path="/demandeBillet" element={<BilletRetour/>} />
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App; 
+export default App;

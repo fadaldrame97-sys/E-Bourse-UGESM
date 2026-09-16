@@ -7,28 +7,31 @@ import Carte from "../components/Carte";
 function MesDemandes(){
 
   const [demandes, setDemandes] = useState([]);
+  const [billet, setBillet] = useState(null);
   const [erreur, setErreur] = useState('');
 
-   const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
 
-   useEffect(()=>{
-    api.get('/demandes-bourse')
-    .then(function(res){
-        setDemandes(res.data.demandes);
+  useEffect(()=>{
+    Promise.all([
+      api.get('/demandes-bourse'),
+      api.get('/billets-retour'),
+    ])
+    .then(function ([resDemandes, resBillet]) {
+      setDemandes(resDemandes.data.demandes);
+      setBillet(resBillet.data.billet);
     })
-
     .catch(function (error) {
-        setErreur('Impossible de charger vos demandes.');
-       
-      });
-
-
-   },[]);
+      setErreur('Impossible de charger vos demandes.');
+    })
+    
+  },[]);
 
 
 
-    function couleurBadge(statut) {
+  function couleurBadge(statut) {
     if (statut === 'validee') {
       return 'bg-[#EAF3DE] text-[#27500A]';
     } else if (statut === 'rejetee') {
@@ -61,36 +64,56 @@ function MesDemandes(){
                     Retour au tableau de bord
                 </button>
 
+                {erreur && ( <p className="text-sm text-red-600 mb-4">{erreur}</p>  )}
+               
 
-                 <h1 className="text-xl font-bold text-[#2C2C2A] mb-6">Mes demandes de bourse</h1>
+                { !erreur && (
+                  <>
+                    <h1 className="text-xl font-bold text-[#2C2C2A] mb-4">Demandes de bourse</h1>
 
-                  {erreur && ( <p className="text-sm text-red-600">{erreur}</p>  )}
+                    {demandes.length === 0 && (
+                      <Carte>
+                        <p className="text-sm text-[#888780] text-center">Aucune demande de bourse pour le moment.</p>
+                      </Carte>
+                    )}
 
+                    <div className="flex flex-col gap-3 mb-8">
+                      {demandes.map(function (demande) {
+                        return (
+                          <Carte key={demande.id}>
+                            <div className="flex items-center justify-between mb-2">
+                              <p className="text-sm font-semibold text-[#2C2C2A]">{demande.numero_dossier}</p>
+                              <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurBadge(demande.statut)}>
+                                {demande.statut}
+                              </span>
+                            </div>
+                            <p className="text-sm text-[#888780]">{libelleType(demande.type)}</p>
+                            <p className="text-xs text-[#888780] mt-1">Déposée le {demande.date_depot}</p>
+                          </Carte>
+                        );
+                      })}
+                    </div>
 
-        { !erreur && demandes.length === 0 && (
-          <Carte>
-            <p className="text-sm text-[#888780] text-center">Aucune demande pour le moment.</p>
-          </Carte>
-        )}
+                    <h1 className="text-xl font-bold text-[#2C2C2A] mb-4">Billet de retour</h1>
 
-
-
-        <div className="flex flex-col gap-3">
-          {demandes.map(function (demande) {
-            return (
-              <Carte key={demande.id}>
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm font-semibold text-[#2C2C2A]">{demande.numero_dossier}</p>
-                  <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurBadge(demande.statut)}>
-                    {demande.statut}
-                  </span>
-                </div>
-                <p className="text-sm text-[#888780]">{libelleType(demande.type)}</p>
-                <p className="text-xs text-[#888780] mt-1">Déposée le {demande.date_depot}</p>
-              </Carte>
-            );
-          })}
-        </div>
+                    {billet === null ? (
+                      <Carte>
+                        <p className="text-sm text-[#888780] text-center">Aucune demande de billet de retour pour le moment.</p>
+                      </Carte>
+                    ) : (
+                      <Carte>
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-sm font-semibold text-[#2C2C2A]">Billet de retour</p>
+                          <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurBadge(billet.statut)}>
+                            {billet.statut}
+                          </span>
+                        </div>
+                        <p className="text-sm text-[#888780]">Motif : {billet.motif}</p>
+                        <p className="text-xs text-[#888780] mt-1">Demandé le {billet.date_demande}</p>
+                      </Carte>
+                    )}
+                  </>
+                )}
 
       </div>
     </div>

@@ -10,6 +10,8 @@ class StatistiqueService{
    public function resume(){
 
     $nombreEtudiantActifs=Etudiant::where('statut_bourse','active')->count();
+     $montantMensuel = config('bourse.montant_mensuel');
+
      
    }
 }

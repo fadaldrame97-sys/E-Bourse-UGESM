@@ -81,6 +81,14 @@ class DemandeBourseService
     }
 
 
+    public function toutesLesDemandesEnAttente(){
+    return DemandeBourse::with('etudiant.user')
+        ->where('statut', 'en_attente')
+        ->orderBy('date_depot', 'asc')
+        ->get();
+}
+
+
     
 
 }

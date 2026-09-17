@@ -21,7 +21,7 @@ function AdminDashboard() {
     api.get('/admin/statistiques')
       .then(function (reponse) { setStats(reponse.data); })
       .catch(function () {});
-  }, []);
+    }, []);
 
   if (!admin || !stats) {
     return (

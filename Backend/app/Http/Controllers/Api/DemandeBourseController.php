@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Services\DemandeBourseService;
 use App\Http\Requests\DemandeBourse\StoreDemandeBourseRequest;
+use App\Http\Requests\DemandeBourse\RejeterDemandeBourseRequest;
 
 class DemandeBourseController
 {
@@ -47,27 +48,27 @@ class DemandeBourseController
 
 }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function enAttente(){
+    $demandes = $this->demandeBourseService->toutesLesDemandesEnAttente();
+
+    return response()->json(['demandes' => $demandes]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function valider($id){
+        $demande = $this->demandeBourseService->valider($id);
+
+        return response()->json([
+            'message' => 'Demande validée avec succès',
+            'demande' => $demande,
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function rejeter(RejeterDemandeBourseRequest $request, $id){
+        $demande = $this->demandeBourseService->rejeter($id, $request->validated('commentaire'));
+
+        return response()->json([
+            'message' => 'Demande rejetée',
+            'demande' => $demande,
+        ]);
     }
-}
+    }

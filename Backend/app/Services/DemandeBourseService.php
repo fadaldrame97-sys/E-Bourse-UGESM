@@ -89,6 +89,12 @@ class DemandeBourseService
 }
 
 
+public function valider($demandeId){
+
+    $user=Auth::user();
+}
+
+
     
 
 }

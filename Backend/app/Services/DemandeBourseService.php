@@ -92,6 +92,23 @@ class DemandeBourseService
 public function valider($demandeId){
 
     $user=Auth::user();
+    $admin = $user->admin;
+
+
+
+      if (!$admin) {
+        throw new \Exception('Seul un admin peut valider une demande.');
+    }
+
+    if (!$admin->isValidateur() && !$admin->isSuperAdmin()) {
+        throw new \Exception('Vous n\'avez pas la permission de valider une demande.');
+    }
+
+    $demande = DemandeBourse::find($demandeId);
+
+    if (!$demande) {
+        throw new \Exception('Demande introuvable.');
+    }
 }
 
 

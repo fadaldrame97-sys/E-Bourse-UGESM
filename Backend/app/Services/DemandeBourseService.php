@@ -108,6 +108,16 @@ public function valider($demandeId){
 
     if (!$demande) {
         throw new \Exception('Demande introuvable.');
+
+        $demande->statut = 'validee';
+        $demande->date_traitement = now();
+        $demande->save();
+
+        $etudiant = $demande->etudiant;
+        $etudiant->statut_bourse = 'actif';
+        $etudiant->save();
+
+    return $demande;
     }
 }
 

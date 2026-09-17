@@ -22,4 +22,19 @@ function AdminDemandes() {
       .catch(function () { alert('Erreur lors de la validation.'); });
   }
 
+
+   function rejeterDemande(id) {
+    const commentaire = commentaires[id];
+
+    if (!commentaire) {
+      alert('Veuillez indiquer un motif de rejet.');
+      return;
+    }
+
+    api.post('/admin/demandes/' + id + '/rejeter', { commentaire: commentaire })
+      .then(function () { charger(); })
+      .catch(function () { alert('Erreur lors du rejet.'); });
+  }
+
+
 }

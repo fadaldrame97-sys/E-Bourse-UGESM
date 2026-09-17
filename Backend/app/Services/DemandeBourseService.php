@@ -119,9 +119,43 @@ public function valider($demandeId){
 
     return $demande;
     }
+     
+
+    public function rejeter($demandeId, $commentaire)
+{
+    $user = Auth::user();
+    $admin = $user->admin;
+
+    if (!$admin) {
+        throw new \Exception('Seul un admin peut rejeter une demande.');
+    }
+
+    if (!$admin->isValidateur() && !$admin->isSuperAdmin()) {
+        throw new \Exception('Vous n\'avez pas la permission de rejeter une demande.');
+    }
+
+    $demande = DemandeBourse::find($demandeId);
+    
 }
 
 
+public function rejeter($demandeId, $commentaire)
+{
+    $user = Auth::user();
+    $admin = $user->admin;
+
+    if (!$admin) {
+        throw new \Exception('Seul un admin peut rejeter une demande.');
+    }
+
+    if (!$admin->isValidateur() && !$admin->isSuperAdmin()) {
+        throw new \Exception('Vous n\'avez pas la permission de rejeter une demande.');
+    }
+
+    $demande = DemandeBourse::find($demandeId);
+
+
+}
     
 
 }

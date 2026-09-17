@@ -79,7 +79,7 @@ function AdminDashboard() {
               return (
                 <div key={universite.id} className="flex justify-between text-sm py-1">
                   <p>{universite.nom}</p>
-                  <p className="font-medium">{universite.nombre_etudiants}</p>
+                 <p className="font-medium">{universite.etudiants_count}</p>
                 </div>
               );
             })}

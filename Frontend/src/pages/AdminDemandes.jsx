@@ -13,4 +13,13 @@ function AdminDemandes() {
       .catch(function () {});
   }
 
-   }
+
+    useEffect(function () { charger(); }, []);
+
+  function validerDemande(id) {
+    api.post('/admin/demandes/' + id + '/valider')
+      .then(function () { charger(); })
+      .catch(function () { alert('Erreur lors de la validation.'); });
+  }
+
+}

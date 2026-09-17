@@ -97,3 +97,4 @@ function AdminDemandes() {
 
 
 }
+export default AdminDemandes;

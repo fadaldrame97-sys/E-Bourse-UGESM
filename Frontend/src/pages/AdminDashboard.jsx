@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import Carte from "../components/Carte";
 import NavBar from "../components/NavBar";
+import AdminDemandes from "./AdminDemandes";
+
 
 function AdminDashboard() {
 
@@ -88,9 +90,9 @@ function AdminDashboard() {
 
         <div className="flex flex-col gap-2 mt-6">
           {peutValider && (
-            <button onClick={function () { navigate('/admin/demandes'); }} className="w-full bg-white border border-[#D3D1C7] rounded-lg py-2.5 text-sm font-semibold text-left px-4">
-              Demandes de bourse
-            </button>
+            <button onClick={function () { navigate('/admin/demandes'); }} className="w-full bg-white border border-[#D3D1C7] rounded-lg py-2.5 text-sm font-semibold text-left px-4"> 
+             Consulter les demandes
+               </button>
           )}
 
           {peutValider && (

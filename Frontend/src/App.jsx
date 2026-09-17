@@ -7,6 +7,7 @@ import DemandeBourse from "./components/DemandeBourse";
 import MesDemandes from "./pages/MesDemandes";
 import BilletRetour from "./pages/BilletRetour";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminDemandes from "./pages/AdminDemandes";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/mes-demandes" element={<MesDemandes />} />
         <Route path="/demandeBillet" element={<BilletRetour/>} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/demandes" element={<AdminDemandes />} />
+
       </Routes>
     </BrowserRouter>
   );

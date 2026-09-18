@@ -4,6 +4,7 @@ import api from "../api/axios";
 import Carte from "../components/Carte";
 import NavBar from "../components/NavBar";
 import AdminDemandes from "./AdminDemandes";
+import AdminBillets from "./AdminBillets";
 
 
 function AdminDashboard() {

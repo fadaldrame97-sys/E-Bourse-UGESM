@@ -108,6 +108,7 @@ public function valider($demandeId){
 
     if (!$demande) {
         throw new \Exception('Demande introuvable.');
+            }
 
         $demande->statut = 'validee';
         $demande->date_traitement = now();
@@ -118,7 +119,7 @@ public function valider($demandeId){
         $etudiant->save();
 
     return $demande;
-    }
+
      }
      
 

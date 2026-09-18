@@ -48,18 +48,48 @@ class BilletRetourService
         ]);
     }
 
-    public function monBillet(){
-    $user = Auth::user();
+    public function monBillet()
+    {
+        $user = Auth::user();
+        $etudiant = $user->etudiant;
 
-    $etudiant = $user->etudiant;
+        if (!$etudiant) {
+            throw new Exception(
+                'Seul un étudiant peut consulter son billet retour.'
+            );
+        }
 
-    if (!$etudiant) {
-        throw new Exception(
-            'Seul un étudiant peut consulter son billet retour.'
-        );
+        return BilletRetour::where('etudiant_id', $etudiant->id)
+            ->first();
     }
 
-    return BilletRetour::where('etudiant_id', $etudiant->id)
-        ->first();
-}
+    public function tousEnAttente()
+    {
+        return BilletRetour::with('etudiant.user')
+            ->where('statut', 'en_attente')
+            ->orderBy('date_demande')
+            ->get();
+    }
+
+    public function valider($id)
+    {
+        $billet = BilletRetour::findOrFail($id);
+
+        $billet->statut = 'validee';
+        $billet->date_validation = now();
+        $billet->save();
+
+        return $billet;
+    }
+
+    public function rejeter($id)
+    {
+        $billet = BilletRetour::findOrFail($id);
+
+        $billet->statut = 'refusee';
+        $billet->date_validation = now();
+        $billet->save();
+
+        return $billet;
+    }
 }

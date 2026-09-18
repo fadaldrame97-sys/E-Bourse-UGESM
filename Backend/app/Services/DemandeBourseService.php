@@ -107,7 +107,7 @@ public function valider($demandeId){
     $demande = DemandeBourse::find($demandeId);
 
     if (!$demande) {
-        throw new \Exception('Demande introuvable.');
+        throw new \Exception('Demande introuvable.');  }
 
         $demande->statut = 'validee';
         $demande->date_traitement = now();
@@ -118,7 +118,7 @@ public function valider($demandeId){
         $etudiant->save();
 
     return $demande;
-    }
+  
      }
      
 

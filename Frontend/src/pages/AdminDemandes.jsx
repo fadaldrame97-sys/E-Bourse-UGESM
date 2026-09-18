@@ -74,6 +74,16 @@ function AdminDemandes() {
                   </p>
                   <p className="text-xs text-[#888780]">{demande.numero_dossier} · {demande.type}</p>
                 </div>
+                 
+                
+                {demande.documents.map(function(doc){
+                  return(
+                    
+                  );
+                })}
+
+
+
 
                 <input
                   type="text"

@@ -3,6 +3,7 @@ import api from "../api/axios";
 import Carte from "../components/Carte";
 import NavBar from "../components/NavBar";
 import AdminBillets from "./AdminBillets";
+import { href } from "react-router-dom";
 
 function AdminDemandes() {
   const [demandes, setDemandes] = useState([]);
@@ -74,14 +75,24 @@ function AdminDemandes() {
                   </p>
                   <p className="text-xs text-[#888780]">{demande.numero_dossier} · {demande.type}</p>
                 </div>
-                 
-                
-                {demande.documents.map(function(doc){
-                  return(
-                    
-                  );
-                })}
 
+                <div className="flex flex-col gap-1 mb-3">
+                {demande.documents.map(function (document) {
+
+                    return (
+                        <a
+                            key={document.id}
+                            href={"http://127.0.0.1:8000/storage/" + document.chemin_fichier}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-[#D85A30] underline"
+                        >
+                            Voir {document.nom}
+                        </a>
+                    );
+
+                })}
+                </div>
 
 
 

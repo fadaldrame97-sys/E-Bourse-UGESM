@@ -29,27 +29,23 @@ class BilletRetourService
             );
         }
 
-        $cheminDiplome = null;
+                    $cheminDiplome = null;
 
-        if ($data['type'] === 'diplome' && !empty($data['diplome'])) {
-            $cheminDiplome = $data['diplome']->store(
-                'diplomes',
-                'public'
-            );
+            if ($data['type'] === 'diplome' && !empty($data['diplome'])) {
+                $cheminDiplome = $data['diplome']->store('diplomes', 'public');
+            }
+
+            return BilletRetour::create([
+                'etudiant_id' => $etudiant->id,
+                'type' => $data['type'],
+                'motif' => $data['motif'],
+                'preuve_diplome' => $cheminDiplome,
+                'statut' => 'en_attente',
+                'date_demande' => now(),
+            ]);
         }
 
-        return BilletRetour::create([
-            'etudiant_id' => $etudiant->id,
-            'type' => $data['type'],
-            'motif' => $data['motif'],
-            'chemin_diplome' => $cheminDiplome,
-            'statut' => 'en_attente',
-            'date_demande' => now(),
-        ]);
-    }
-
-    public function monBillet()
-    {
+    public function monBillet() {
         $user = Auth::user();
         $etudiant = $user->etudiant;
 
@@ -63,16 +59,14 @@ class BilletRetourService
             ->first();
     }
 
-    public function tousEnAttente()
-    {
+    public function tousEnAttente(){
         return BilletRetour::with('etudiant.user')
             ->where('statut', 'en_attente')
             ->orderBy('date_demande')
             ->get();
     }
 
-    public function valider($id)
-    {
+    public function valider($id){
         $billet = BilletRetour::findOrFail($id);
 
         $billet->statut = 'validee';
@@ -82,8 +76,7 @@ class BilletRetourService
         return $billet;
     }
 
-    public function rejeter($id)
-    {
+    public function rejeter($id){
         $billet = BilletRetour::findOrFail($id);
 
         $billet->statut = 'refusee';

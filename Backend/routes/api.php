@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DemandeBourseController;
 use App\Http\Controllers\Api\BilletRetourController;
 use App\Http\Controllers\Api\StatistiqueController;
+use App\Http\Controllers\Api\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -23,4 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/billets-en-attente', [BilletRetourController::class, 'enAttente']);
     Route::post('/admin/billets/{id}/valider', [BilletRetourController::class, 'valider']);
     Route::post('/admin/billets/{id}/rejeter', [BilletRetourController::class, 'rejeter']);
+    
+    Route::get('/notifications', [NotificationController::class, 'index']);
 });

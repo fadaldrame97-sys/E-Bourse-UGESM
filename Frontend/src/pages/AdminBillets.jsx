@@ -52,6 +52,18 @@ function AdminBillets() {
                   <p className="text-xs text-[#888780]">{billet.type} · {billet.motif}</p>
                 </div>
 
+                  {billet.chemin_diplome && (
+                        <a
+                            href={"http://127.0.0.1:8000/storage/" + billet.chemin_diplome}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-[#D85A30] underline block mb-3"
+                        >
+                            Voir le diplôme
+                        </a>
+                    )}
+  
+
                 <div className="flex gap-2">
                   <button
                     onClick={function () { validerBillet(billet.id); }}

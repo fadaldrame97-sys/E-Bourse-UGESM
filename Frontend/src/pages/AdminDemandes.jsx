@@ -16,13 +16,13 @@ function AdminDemandes() {
  // }
 
  function charger() {
-  api.get('/admin/billets-en-attente')
-    .then(function (reponse) {
-      setBillets(reponse.data.billets);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    api.get('/admin/demandes-en-attente')
+        .then(function (reponse) {
+            setDemandes(reponse.data.demandes);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 

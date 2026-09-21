@@ -30,11 +30,38 @@ class BilletRetourController
         ], 201);
     }
 
-   public function index(){
-    $billet = $this->billetRetourService->monBillet();
+    public function index(){
+        $billet = $this->billetRetourService->monBillet();
 
-    return response()->json([
-        'billet' => $billet,
-    ]);
-}
+        return response()->json([
+            'billet' => $billet,
+        ]);
+    }
+
+    public function enAttente()
+    {
+        $billets = $this->billetRetourService->tousEnAttente();
+
+        return response()->json(['billets' => $billets]);
+    }
+
+    public function valider($id)
+    {
+        $billet = $this->billetRetourService->valider($id);
+
+        return response()->json([
+            'message' => 'Billet retour validé',
+            'billet' => $billet,
+        ]);
+    }
+
+    public function rejeter($id)
+    {
+        $billet = $this->billetRetourService->rejeter($id);
+
+        return response()->json([
+            'message' => 'Billet retour refusé',
+            'billet' => $billet,
+        ]);
+    }
 }

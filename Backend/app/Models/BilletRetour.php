@@ -13,7 +13,6 @@ class BilletRetour extends Model
     'date_demande',
     'date_validation',
     'statut',
-    'statut',
     'preuve_diplome'
 ];
 

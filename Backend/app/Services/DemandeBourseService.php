@@ -82,7 +82,7 @@ class DemandeBourseService
 
 
     public function toutesLesDemandesEnAttente(){
-    return DemandeBourse::with('etudiant.user')
+    return DemandeBourse::with('etudiant.user','documents')
         ->where('statut', 'en_attente')
         ->orderBy('date_depot', 'asc')
         ->get();
@@ -107,7 +107,9 @@ public function valider($demandeId){
     $demande = DemandeBourse::find($demandeId);
 
     if (!$demande) {
+
         throw new \Exception('Demande introuvable.');  }
+
 
         $demande->statut = 'validee';
         $demande->date_traitement = now();
@@ -118,7 +120,7 @@ public function valider($demandeId){
         $etudiant->save();
 
     return $demande;
-  
+
      }
      
 

@@ -2,16 +2,28 @@ import { useState, useEffect } from "react";
 import api from "../api/axios";
 import Carte from "../components/Carte";
 import NavBar from "../components/NavBar";
+import AdminBillets from "./AdminBillets";
+import { href } from "react-router-dom";
 
 function AdminDemandes() {
   const [demandes, setDemandes] = useState([]);
   const [commentaires, setCommentaires] = useState({});
 
-  function charger() {
+ // function charger() {
+   // api.get('/admin/demandes-en-attente')
+     // .then(function (reponse) { setDemandes(reponse.data.demandes); })
+     // .catch(function () {});
+ // }
+
+ function charger() {
     api.get('/admin/demandes-en-attente')
-      .then(function (reponse) { setDemandes(reponse.data.demandes); })
-      .catch(function () {});
-  }
+        .then(function (reponse) {
+            setDemandes(reponse.data.demandes);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 
     useEffect(function () { charger(); }, []);
@@ -63,6 +75,26 @@ function AdminDemandes() {
                   </p>
                   <p className="text-xs text-[#888780]">{demande.numero_dossier} · {demande.type}</p>
                 </div>
+
+                <div className="flex flex-col gap-1 mb-3">
+                {demande.documents.map(function (document) {
+
+                    return (
+                        <a
+                            key={document.id}
+                            href={"http://127.0.0.1:8000/storage/" + document.chemin_fichier}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-[#D85A30] underline"
+                        >
+                            Voir {document.nom}
+                        </a>
+                    );
+
+                })}
+                </div>
+
+
 
                 <input
                   type="text"

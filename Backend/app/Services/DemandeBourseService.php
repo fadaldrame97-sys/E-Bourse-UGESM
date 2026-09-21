@@ -2,19 +2,24 @@
 
 namespace App\Services;
 use App\Models\Document;
+use App\Services\NotificationService;
 
 use App\Models\DemandeBourse;
 use Illuminate\Support\Facades\Auth;
 
-class DemandeBourseService
-{
-    public function getAll()
-    {
+class DemandeBourseService{
+
+    protected $notificationService;
+
+ public function __construct(NotificationService $notificationService){
+    $this->notificationService = $notificationService;
+}
+
+    public function getAll(){
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-   public function create(array $data, array $fichiers)
-{
+   public function create(array $data, array $fichiers){
     $user = Auth::user();
     $etudiant = $user->etudiant;
 
@@ -119,13 +124,20 @@ public function valider($demandeId){
         $etudiant->statut_bourse = 'actif';
         $etudiant->save();
 
+
+        $this->notificationService->creer(
+            $etudiant->id,
+            'Votre demande ' . $demande->numero_dossier . ' a été validée.',
+            'demande_bourse',
+            $demande->id
+        );
+
     return $demande;
 
      }
      
 
-public function rejeter($demandeId, $commentaire)
-{
+public function rejeter($demandeId, $commentaire){
     $user = Auth::user();
     $admin = $user->admin;
 
@@ -147,6 +159,16 @@ public function rejeter($demandeId, $commentaire)
     $demande->commentaire = $commentaire;
     $demande->date_traitement = now();
     $demande->save();
+
+
+    $etudiant = $demande->etudiant;
+
+        $this->notificationService->creer(
+            $etudiant->id,
+            'Votre demande ' . $demande->numero_dossier . ' a été rejetée. Consultez le motif dans "Mes demandes".',
+            'demande_bourse',
+            $demande->id
+        );
 
     return $demande;
 

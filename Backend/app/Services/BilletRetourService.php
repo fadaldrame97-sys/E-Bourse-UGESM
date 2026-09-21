@@ -4,10 +4,17 @@ namespace App\Services;
 
 use App\Models\BilletRetour;
 use Illuminate\Support\Facades\Auth;
+use App\Services\NotificationService;
 use Exception;
 
 class BilletRetourService
 {
+
+    protected $notificationService;
+
+public function __construct(NotificationService $notificationService){
+    $this->notificationService = $notificationService;
+}
     public function create(array $data)
     {
         $user = Auth::user();
@@ -73,6 +80,13 @@ class BilletRetourService
         $billet->date_validation = now();
         $billet->save();
 
+        $this->notificationService->creer(
+            $etudiant->id,
+            'Votre billet retour a été validé.Le billet sera envoyé par email.',
+            'billet_retour',
+            $billet->id
+        );
+
         return $billet;
     }
 
@@ -82,6 +96,13 @@ class BilletRetourService
         $billet->statut = 'refusee';
         $billet->date_validation = now();
         $billet->save();
+
+          $this->notificationService->creer(
+            $etudiant->id,
+            'Votre demande de billet a été rejeté, consultez "Mes Demandes"',
+            'billet_retour',
+            $billet->id
+        );
 
         return $billet;
     }

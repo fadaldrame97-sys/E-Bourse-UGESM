@@ -54,7 +54,7 @@ function Login(){
 
         <div className="flex flex-col items-center mb-6">
           <div className="w-12 h-12 rounded-xl bg-[#D85A30] flex items-center justify-center mb-4">
-            <span className="text-[#FAECE7] text-xl">🎓</span>
+           
           </div>
           <p className="font-semibold text-base">E-Bourse</p>
           <p className="text-sm text-[#888780]">Connexion à votre espace</p>

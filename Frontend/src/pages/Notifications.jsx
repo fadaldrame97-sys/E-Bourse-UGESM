@@ -26,4 +26,22 @@ function Notifications() {
           </Carte>
         )}
 
+
+
+        <div className="flex flex-col gap-3">
+          {notifications.map(function (notification) {
+            return (
+              <Carte key={notification.id}>
+                <p className="text-sm text-[#2C2C2A]">{notification.message}</p>
+                <p className="text-xs text-[#888780] mt-1">{notification.date_envoi}</p>
+              </Carte>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  );
 }
+
+export default Notifications;

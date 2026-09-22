@@ -92,22 +92,24 @@ public function __construct(NotificationService $notificationService){
         return $billet;
     }
 
-    public function rejeter($id){
-        $billet = BilletRetour::findOrFail($id);
+ public function rejeter($id, $commentaire)
+{
+    $billet = BilletRetour::findOrFail($id);
 
-        $billet->statut = 'refusee';
-        $billet->date_validation = now();
-        $billet->save();
+    $billet->statut = 'refusee';
+    $billet->commentaire = $commentaire;
+    $billet->date_validation = now();
+    $billet->save();
 
-        $etudiant = $billet->etudiant;
+    $etudiant = $billet->etudiant;
 
-          $this->notificationService->creer(
-            $etudiant->id,
-            'Votre demande de billet a été rejeté, consultez "Mes Demandes"',
-            'billet_retour',
-            $billet->id
-        );
+    $this->notificationService->creer(
+        $etudiant->id,
+        'Votre demande de billet a été rejetée. Consultez "Mes Demandes" pour le motif.',
+        'billet_retour',
+        $billet->id
+    );
 
-        return $billet;
-    }
+    return $billet;
+}
 }

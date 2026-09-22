@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class BilletRetour extends Model
 {
-    protected $fillable = [
+protected $fillable = [
     'etudiant_id',
     'motif',
     'type',
     'date_demande',
     'date_validation',
     'statut',
-    'preuve_diplome'
+    'preuve_diplome',
+    'commentaire',
 ];
 
 protected function casts(): array

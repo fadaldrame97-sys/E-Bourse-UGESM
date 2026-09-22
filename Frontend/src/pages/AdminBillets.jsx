@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 
 function AdminBillets() {
   const [billets, setBillets] = useState([]);
+  const [commentaires, setCommentaires] = useState({});
 
   function charger() {
     api.get('/admin/billets-en-attente')
@@ -16,6 +17,13 @@ function AdminBillets() {
       });
   }
 
+function changerCommentaire(id, valeur) {
+  const copie = Object.assign({}, commentaires);
+  copie[id] = valeur;
+  setCommentaires(copie);
+}
+
+
   useEffect(function () { charger(); }, []);
 
   function validerBillet(id) {
@@ -24,11 +32,25 @@ function AdminBillets() {
       .catch(function () { alert('Erreur lors de la validation.'); });
   }
 
-  function rejeterBillet(id) {
-    api.post('/admin/billets/' + id + '/rejeter')
-      .then(function () { charger(); })
-      .catch(function () { alert('Erreur lors du rejet.'); });
+ function rejeterBillet(id) {
+  const commentaire = commentaires[id];
+
+  if (!commentaire || commentaire.trim() === '') {
+    alert('Veuillez indiquer un motif de rejet.');
+    return;
   }
+
+  api.post('/admin/billets/' + id + '/rejeter', {
+    commentaire: commentaire
+  })
+    .then(function () {
+      charger();
+    })
+    .catch(function (error) {
+      console.log(error.response?.data);
+      alert('Erreur lors du rejet.');
+    });
+}
 
   return (
     <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
@@ -65,6 +87,17 @@ function AdminBillets() {
   
 
                 <div className="flex gap-2">
+
+                <input
+                    type="text"
+                    placeholder="Motif en cas de rejet"
+                    value={commentaires[billet.id] || ''}
+                    onChange={function (e) { changerCommentaire(billet.id, e.target.value); }}
+                    className="border border-[#D3D1C7] rounded-lg px-3 py-2 text-sm w-full mb-3"
+                  />
+                
+
+
                   <button
                     onClick={function () { validerBillet(billet.id); }}
                     className="flex-1 bg-[#EAF3DE] text-[#27500A] rounded-lg px-3 py-2 text-xs font-semibold"

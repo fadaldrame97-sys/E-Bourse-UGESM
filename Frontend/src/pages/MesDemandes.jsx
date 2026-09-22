@@ -82,13 +82,33 @@ function MesDemandes(){
                         return (
                           <Carte key={demande.id}>
                             <div className="flex items-center justify-between mb-2">
-                              <p className="text-sm font-semibold text-[#2C2C2A]">{demande.numero_dossier}</p>
-                              <span className={"text-xs font-semibold px-3 py-1 rounded-full " + couleurBadge(demande.statut)}>
+                              <p className="text-sm font-semibold text-[#2C2C2A]">
+                                {demande.numero_dossier}
+                              </p>
+
+                              <span
+                                className={
+                                  "text-xs font-semibold px-3 py-1 rounded-full " +
+                                  couleurBadge(demande.statut)
+                                }
+                              >
                                 {demande.statut}
                               </span>
                             </div>
-                            <p className="text-sm text-[#888780]">{libelleType(demande.type)}</p>
-                            <p className="text-xs text-[#888780] mt-1">Déposée le {demande.date_depot}</p>
+
+                            <p className="text-sm text-[#888780]">
+                              {libelleType(demande.type)}
+                            </p>
+
+                            {demande.statut === 'rejetee' && demande.commentaire && (
+                              <p className="text-sm text-red-600 mt-2">
+                                Motif du rejet : {demande.commentaire}
+                              </p>
+                            )}
+
+                            <p className="text-xs text-[#888780] mt-1">
+                              Déposée le {demande.date_depot}
+                            </p>
                           </Carte>
                         );
                       })}
@@ -108,8 +128,19 @@ function MesDemandes(){
                             {billet.statut}
                           </span>
                         </div>
-                        <p className="text-sm text-[#888780]">Motif : {billet.motif}</p>
-                        <p className="text-xs text-[#888780] mt-1">Demandé le {billet.date_demande}</p>
+                        <p className="text-sm text-[#888780]">
+                                Motif de la demande : {billet.motif}
+                              </p>
+
+                              {billet.statut === 'refusee' && billet.commentaire && (
+                                <p className="text-sm text-red-600 mt-2">
+                                  Motif du rejet : {billet.commentaire}
+                                </p>
+                              )}
+
+                              <p className="text-xs text-[#888780] mt-1">
+                                Demandé le {billet.date_demande}
+                              </p>
                       </Carte>
                     )}
                   </>

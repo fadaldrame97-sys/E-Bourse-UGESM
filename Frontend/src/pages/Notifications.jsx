@@ -11,4 +11,19 @@ function Notifications() {
       .catch(function () {})
   },[]);
 
+
+
+    return (
+    <div className="min-h-screen bg-[#FDF6F3] px-6 py-10">
+      <div className="max-w-2xl mx-auto">
+        <BoutonRetour vers="/dashboard" />
+
+        <h1 className="text-xl font-bold text-[#2C2C2A] mb-6">Notifications</h1>
+
+        {notifications.length === 0 && (
+          <Carte>
+            <p className="text-sm text-[#888780] text-center">Aucune notification.</p>
+          </Carte>
+        )}
+
 }

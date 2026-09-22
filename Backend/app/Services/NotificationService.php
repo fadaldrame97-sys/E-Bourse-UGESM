@@ -6,8 +6,7 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 
-class NotificationService
-{
+class NotificationService{
     public function creer($etudiantId, $message, $type, $referenceId){
         return Notification::create([
             'etudiant_id' => $etudiantId,
@@ -18,15 +17,20 @@ class NotificationService
         ]);
     }
 
-    public function mesNotifications(){
-        $user=Auth::user();
-        $etudiant=$user->etudiant;
+    public function mesNotifications()
+{
+    $user = Auth::user();
+    $etudiant = $user->etudiant;
 
-        if(!$etudiant){
-            throw new \Exception('seul étudiant peut consulter ces notifications');
-
-            return Notification::wehre('etudiant_id',$etudiant->id)->orderBy('date_envoi','desc')->get();
-        }
+    if (!$etudiant) {
+        throw new \Exception(
+            'Seul un étudiant peut consulter ses notifications.'
+        );
     }
+
+    return Notification::where('etudiant_id', $etudiant->id)
+        ->orderBy('date_envoi', 'desc')
+        ->get();
+}
      }
 

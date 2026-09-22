@@ -9,6 +9,7 @@ import BilletRetour from "./pages/BilletRetour";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminDemandes from "./pages/AdminDemandes";
 import AdminBillets from "./pages/AdminBillets";
+import Notifications from "./pages/Notifications";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/demandes" element={<AdminDemandes />} />
         <Route path="/admin/billets" element={<AdminBillets/>}/>
+        <Route path="/notifications" element={<Notifications />} />
 
       </Routes>
     </BrowserRouter>

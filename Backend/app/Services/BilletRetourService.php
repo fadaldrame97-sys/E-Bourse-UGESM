@@ -80,6 +80,8 @@ public function __construct(NotificationService $notificationService){
         $billet->date_validation = now();
         $billet->save();
 
+         $etudiant = $billet->etudiant;
+
         $this->notificationService->creer(
             $etudiant->id,
             'Votre billet retour a été validé.Le billet sera envoyé par email.',
@@ -96,6 +98,8 @@ public function __construct(NotificationService $notificationService){
         $billet->statut = 'refusee';
         $billet->date_validation = now();
         $billet->save();
+
+        $etudiant = $billet->etudiant;
 
           $this->notificationService->creer(
             $etudiant->id,

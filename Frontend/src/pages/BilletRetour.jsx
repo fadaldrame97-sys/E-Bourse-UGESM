@@ -176,11 +176,9 @@ function BilletRetour(){
               </p>
             )}
 
-            <BoutonPrimaire
-              texte="Envoyer la demande"
-              type="submit"
-             
-            />
+           <BoutonPrimaire type="submit">
+               Envoyer la demande
+           </BoutonPrimaire>
 
           </form>
         </Carte>

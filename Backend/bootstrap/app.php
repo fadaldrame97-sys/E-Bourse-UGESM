@@ -26,4 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->json(['message' => 'Unauthenticated.'], 401);
             }
         });
-    })->create();
+    }) ->withMiddleware(function (Middleware $middleware): void {
+    $middleware->alias([
+        'admin.type' => \App\Http\Middleware\CheckAdminType::class,
+    ]);
+})->create();

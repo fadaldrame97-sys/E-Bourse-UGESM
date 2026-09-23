@@ -15,8 +15,7 @@ class BilletRetourService
 public function __construct(NotificationService $notificationService){
     $this->notificationService = $notificationService;
 }
-    public function create(array $data)
-    {
+    public function create(array $data){
         $user = Auth::user();
         $etudiant = $user->etudiant;
 
@@ -36,11 +35,35 @@ public function __construct(NotificationService $notificationService){
             );
         }
 
-                    $cheminDiplome = null;
+            $cheminDiplome = null;
 
             if ($data['type'] === 'diplome' && !empty($data['diplome'])) {
                 $cheminDiplome = $data['diplome']->store('diplomes', 'public');
             }
+
+        
+           
+            $billetExistant = BilletRetour::where('etudiant_id', $etudiant->id)
+                    ->whereIn('statut', ['en_attente', 'validee'])
+                    ->first();
+
+                        if ($billetExistant) {
+
+                    if ($billetExistant->statut === 'validee') {
+                        throw new Exception(
+                            'Votre billet retour a déjà été validé. '
+                            . 'Vous ne pouvez plus effectuer une nouvelle demande.'
+                        );
+                    }
+
+                    throw new Exception(
+                        'Vous avez déjà une demande de billet retour en cours.'
+                    );
+                }
+
+
+
+        
 
             return BilletRetour::create([
                 'etudiant_id' => $etudiant->id,
@@ -92,24 +115,23 @@ public function __construct(NotificationService $notificationService){
         return $billet;
     }
 
- public function rejeter($id, $commentaire)
-{
-    $billet = BilletRetour::findOrFail($id);
+    public function rejeter($id, $commentaire){
+        $billet = BilletRetour::findOrFail($id);
 
-    $billet->statut = 'refusee';
-    $billet->commentaire = $commentaire;
-    $billet->date_validation = now();
-    $billet->save();
+        $billet->statut = 'refusee';
+        $billet->commentaire = $commentaire;
+        $billet->date_validation = now();
+        $billet->save();
 
-    $etudiant = $billet->etudiant;
+        $etudiant = $billet->etudiant;
 
-    $this->notificationService->creer(
-        $etudiant->id,
-        'Votre demande de billet a été rejetée. Consultez "Mes Demandes" pour le motif.',
-        'billet_retour',
-        $billet->id
-    );
+        $this->notificationService->creer(
+            $etudiant->id,
+            'Votre demande de billet a été rejetée. Consultez "Mes Demandes" pour le motif.',
+            'billet_retour',
+            $billet->id
+        );
 
-    return $billet;
-}
+        return $billet;
+    }
 }

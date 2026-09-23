@@ -19,20 +19,46 @@ class DemandeBourseService{
         return DemandeBourse::with('etudiant.user', 'documents')->get();
     }
 
-   public function create(array $data, array $fichiers){
+ public function create(array $data, array $fichiers){
     $user = Auth::user();
     $etudiant = $user->etudiant;
 
     if (!$etudiant) {
-        throw new \Exception('Seul un étudiant peut créer une demande de bourse.');
+        throw new \Exception(
+            'Seul un étudiant peut créer une demande de bourse.'
+        );
     }
 
-    $demandeActive=DemandeBourse::where('etudiant_id', $etudiant->id)
-                    ->whereIn('statut',['en_attente','incomplet','en_cours'])->first();
+   
+    $demandeActive = DemandeBourse::where('etudiant_id', $etudiant->id)
+        ->whereIn('statut', ['en_attente', 'incomplet', 'en_cours'])
+        ->exists();
 
-    if($demandeActive) {
-        throw new \Exception('Vous déja une demande active');
-    }                
+    if ($demandeActive) {
+        throw new \Exception(
+            'Vous avez déjà une demande de bourse en cours.'
+        );
+    }
+
+  
+    $premiereAttributionValidee = DemandeBourse::where('etudiant_id', $etudiant->id)
+        ->where('type', 'premiere_attribution')
+        ->where('statut', 'validee')
+        ->exists();
+
+    
+    if ($data['type'] === 'premiere_attribution' && $premiereAttributionValidee) {
+        throw new \Exception(
+            'Vous avez déjà bénéficié d’une première attribution. '
+            . 'Votre prochaine demande doit être un renouvellement.'
+        );
+    }
+
+    if ($data['type'] === 'renouvellement' && !$premiereAttributionValidee) {
+        throw new \Exception(
+            'Vous devez avoir une première attribution validée avant de demander un renouvellement.'
+        );
+    }
 
     $numeroDossier = $this->genererNumeroDossier();
 
@@ -59,7 +85,8 @@ class DemandeBourseService{
     }
 
     return $demande;
-}      public function genererNumeroDossier(){
+}    
+ public function genererNumeroDossier(){
             
             $totaleDossiers=DemandeBourse::count();
 

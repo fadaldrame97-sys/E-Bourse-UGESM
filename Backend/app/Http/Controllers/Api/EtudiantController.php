@@ -2,47 +2,33 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 
 class EtudiantController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function etudiantsBilletValide()
     {
-        //
+        $etudiants = Etudiant::with('user', 'billetRetour')
+            ->whereHas('billetRetour', function ($q) {
+                $q->where('statut', 'validee');
+            })
+            ->get();
+
+        return response()->json(['etudiants' => $etudiants]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function destroy($id)
     {
-        //
-    }
+        $etudiant = Etudiant::findOrFail($id);
+        $user = $etudiant->user;
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $etudiant->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($user) {
+            $user->delete();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return response()->json(['message' => 'Compte étudiant supprimé.']);
     }
 }

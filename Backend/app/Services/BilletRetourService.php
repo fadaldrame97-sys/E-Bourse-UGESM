@@ -134,4 +134,31 @@ public function __construct(NotificationService $notificationService){
 
         return $billet;
     }
+
+
+
+    public function annuler($billetId){
+    $user = Auth::user();
+    $etudiant = $user->etudiant;
+
+    if (!$etudiant) {
+        throw new Exception('Seul un étudiant peut annuler sa demande.');
+    }
+
+    $billet = BilletRetour::where('id', $billetId)
+        ->where('etudiant_id', $etudiant->id)
+        ->first();
+
+    if (!$billet) {
+        throw new Exception('Billet retour introuvable.');
+    }
+
+    if ($billet->statut !== 'en_attente') {
+        throw new Exception('Seul un billet retour en attente peut être annulé.');
+    }
+
+    $billet->delete();
+
+    return true;
+}
 }

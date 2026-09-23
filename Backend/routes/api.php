@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/admin/etudiants/billet-valide', [EtudiantController::class, 'etudiantsBilletValide']);
     Route::delete('/admin/etudiants/{id}', [EtudiantController::class, 'destroy']);
+
+    Route::delete('/billets-retour/{id}', [BilletRetourController::class, 'annuler']);
     
     Route::get('/notifications', [NotificationController::class, 'index']);
 });

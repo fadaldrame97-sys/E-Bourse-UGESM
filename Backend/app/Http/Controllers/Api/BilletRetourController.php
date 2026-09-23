@@ -60,4 +60,10 @@ class BilletRetourController
         'billet' => $billet,
     ]);
 }
+
+public function annuler($id){
+    $this->billetRetourService->annuler($id);
+
+    return response()->json(['message' => 'Billet retour annulé.']);
+}
 }

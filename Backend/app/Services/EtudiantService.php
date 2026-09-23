@@ -12,7 +12,7 @@ class EtudiantService{
 public function etudiantsAvecBilletValide(){
 
 
-    return Etudiant::whereHas('billetsRetour', function ($query) {
+    return Etudiant::whereHas('billetRetour', function ($query) {
         $query->where('statut', 'validee');
     })
     ->with('user')
@@ -23,7 +23,7 @@ public function supprimerCompte($id)
 {
     $etudiant = Etudiant::with('user')->findOrFail($id);
 
-    $billetValide = $etudiant->billetsRetour()
+    $billetValide = $etudiant->billetRetour()
         ->where('statut', 'validee')
         ->exists();
 

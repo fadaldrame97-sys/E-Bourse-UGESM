@@ -51,6 +51,19 @@ function MesDemandes(){
     }
   }
 
+
+  function annulerBillet(id) {
+  if (!window.confirm('Annuler votre demande de billet retour ?')) return;
+
+  api.delete('/billets-retour/' + id)
+    .then(function () {
+      window.location.reload();
+    })
+    .catch(function () {
+      alert("Erreur lors de l'annulation.");
+    });
+}
+
   return(
 
 
@@ -141,10 +154,23 @@ function MesDemandes(){
                               <p className="text-xs text-[#888780] mt-1">
                                 Demandé le {billet.date_demande}
                               </p>
+
+
+                               {billet.statut === 'en_attente' && (
+                                 <button
+                                   onClick={function () { annulerBillet(billet.id); }}
+                                  className="text-xs text-red-600 underline mt-2"
+                                     >
+                                   Annuler ma demande
+                              </button>
+                               )}
                       </Carte>
                     )}
                   </>
                 )}
+
+
+               
 
       </div>
     </div>

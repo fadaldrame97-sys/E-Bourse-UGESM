@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminDemandes from "./pages/AdminDemandes";
 import AdminBillets from "./pages/AdminBillets";
 import Notifications from "./pages/Notifications";
+import AdminEtudiants from "./pages/AdminEtudiants";
 
 
 
@@ -27,7 +28,7 @@ function App() {
         <Route path="/admin/demandes" element={<AdminDemandes />} />
         <Route path="/admin/billets" element={<AdminBillets/>}/>
         <Route path="/notifications" element={<Notifications />} />
-
+        <Route path="/admin/etudiants" element={<AdminEtudiants />}/>
       </Routes>
     </BrowserRouter>
   );

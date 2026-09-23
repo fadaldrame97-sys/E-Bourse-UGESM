@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/billets/{id}/valider', [BilletRetourController::class, 'valider']);
     Route::post('/admin/billets/{id}/rejeter', [BilletRetourController::class, 'rejeter']);
 
-    Route::get('/admin/etudiants/billet-valide', [EtudiantController::class, 'etudiantsBilletValide']);
+    Route::get('/admin/etudiants/billets-valides', [EtudiantController::class, 'etudiantsAvecBilletValide']);
     Route::delete('/admin/etudiants/{id}', [EtudiantController::class, 'destroy']);
 
     Route::delete('/billets-retour/{id}', [BilletRetourController::class, 'annuler']);

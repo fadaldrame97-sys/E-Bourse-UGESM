@@ -37,26 +37,32 @@ class EtudiantSeeder extends Seeder
 
         for ($i = 1; $i <= 40; $i++) {
 
-            $user = User::create([
-                'nom' => $noms[$i - 1],
-                'prenom' => $prenoms[$i - 1],
-                'email' => 'etudiant' . $i . '@ebourse.test',
-                'password' => Hash::make('password'),
-                'telephone' => '0600000000',
-                'role' => 'etudiant',
-            ]);
+    $user = User::firstOrCreate(
+        ['email' => 'etudiant' . $i . '@ebourse.test'],
+        [
+            'nom' => $noms[$i - 1],
+            'prenom' => $prenoms[$i - 1],
+            'password' => Hash::make('password'),
+            'telephone' => '0600000000',
+            'role' => 'etudiant',
+        ]
+    );
 
-            Etudiant::create([
-                'user_id' => $user->id,
-                'universite_id' => (($i - 1) % 8) + 1,
-                'matricule' => 'ETU' . $i,
-                'numero_passeport' => 'P' . $i,
-                'date_naissance' => '2000-01-01',
-                'niveau_etude' => $niveaux[($i - 1) % 4],
-                'annee_arrivee' => 2021 + (($i - 1) % 5),
-                'nombre_redoublements' => 0,
-                'statut_bourse' => 'actif',
-            ]);
-        }
+    if (!$user->wasRecentlyCreated) {
+        continue;
+    }
+
+    Etudiant::create([
+        'user_id' => $user->id,
+        'universite_id' => (($i - 1) % 8) + 1,
+        'matricule' => 'ETU' . $i,
+        'numero_passeport' => 'P' . $i,
+        'date_naissance' => '2000-01-01',
+        'niveau_etude' => $niveaux[($i - 1) % 4],
+        'annee_arrivee' => 2021 + (($i - 1) % 5),
+        'nombre_redoublements' => 0,
+        'statut_bourse' => 'actif',
+    ]);
+}
     }
 }

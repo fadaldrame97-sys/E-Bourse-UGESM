@@ -45,11 +45,11 @@ function AdminDashboard() {
         <div className="grid grid-cols-2 gap-3 mb-6">
           <Carte>
             <p className="text-2xl font-bold text-[#D85A30]">{stats.etudiants_actifs}</p>
-            <p className="text-xs text-[#888780]">Étudiants actifs</p>
+            <p className="text-xs text-[#888780]">Nombre d'étudiants</p>
           </Carte>
           <Carte>
             <p className="text-2xl font-bold text-[#D85A30]">{stats.demandes_en_attente}</p>
-            <p className="text-xs text-[#888780]">Demandes en attente</p>
+            <p className="text-xs text-[#888780]">Demandes de bourse en attente</p>
           </Carte>
           <Carte>
             <p className="text-2xl font-bold text-[#D85A30]">{stats.billets_en_attente}</p>
@@ -72,9 +72,9 @@ function AdminDashboard() {
 
           <Carte>
             <p className="text-2xl font-bold text-[#D85A30]">{stats.demandes_validees}</p>
-            <p className="text-xs text-[#888780]">Demandes validées</p>
+            <p className="text-xs text-[#888780]">Demandes de bourse validées</p>
           </Carte>
-          
+
         </div>
 
         <Carte>

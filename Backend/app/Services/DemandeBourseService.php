@@ -148,6 +148,7 @@ public function valider($demandeId){
 
 
         $demande->statut = 'validee';
+        $demande->montant_annuel = config('bourse.montant_mensuel') * 12;
         $demande->date_traitement = now();
         $demande->save();
 

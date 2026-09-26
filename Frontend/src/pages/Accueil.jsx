@@ -106,7 +106,7 @@ function Accueil() {
           </div>
         </div>
 
-        <div className="flex-1 h-[220px] rounded-[20px] overflow-hidden">
+        <div className="flex-1 h-55 rounded-[20px] overflow-hidden">
           <img
             src={photoEtudiants}
             alt="Étudiants"

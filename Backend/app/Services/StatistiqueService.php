@@ -5,31 +5,33 @@ use App\Models\Etudiant;
 use App\Models\DemandeBourse;
 use App\Models\BilletRetour;
 use App\Models\Universite;
+
 class StatistiqueService{
 
    public function resume(){
 
     $nombreEtudiantsActifs=Etudiant::where('statut_bourse','actif')->count();
-     $montantMensuel = config('bourse.montant_mensuel');
+    $montantMensuel = config('bourse.montant_mensuel');
+
+    
+    $nombreDemandesValidees = DemandeBourse::where('statut', 'validee')->count();
 
      return [
+            'etudiants_total' => Etudiant::count(),   
             'etudiants_actifs' => $nombreEtudiantsActifs,
             'demandes_en_attente' => DemandeBourse::where('statut', 'en_attente')->count(),
-            'demandes_validees' => DemandeBourse::where('statut', 'validee')->count(),
+            'demandes_validees' => $nombreDemandesValidees,
             'billets_en_attente' => BilletRetour::where('statut', 'en_attente')->count(),
             'budget_mensuel' => $nombreEtudiantsActifs * $montantMensuel,
             'budget_annuel' => $nombreEtudiantsActifs * $montantMensuel * 12,
-            'par_ville' => $this->repartitionParVille(),  
+            'montant_engage_total' => $nombreDemandesValidees * $montantMensuel * 12,  
+            'par_ville' => $this->repartitionParVille(),
             'universites' => $this->universitesAvecEtudiantsActifs(),
         ];
-
-        
-
-     
    }
 
    public function universitesAvecEtudiantsActifs(){
-    
+
          return Universite::withCount(['etudiants' => function ($query) {
             $query->where('statut_bourse', 'actif');
          }])

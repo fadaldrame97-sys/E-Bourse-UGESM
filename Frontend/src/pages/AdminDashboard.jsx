@@ -61,6 +61,20 @@ function AdminDashboard() {
               <p className="text-xs text-[#888780]">Budget annuel estimé</p>
             </Carte>
           )}
+
+          {peutGerer && (
+            <Carte>
+              <p className="text-2xl font-bold text-[#D85A30]">{stats.montant_engage_total} DH</p>
+              <p className="text-xs text-[#888780]">Montant total engagé </p>
+            </Carte>
+          )}
+
+
+          <Carte>
+            <p className="text-2xl font-bold text-[#D85A30]">{stats.demandes_validees}</p>
+            <p className="text-xs text-[#888780]">Demandes validées</p>
+          </Carte>
+          
         </div>
 
         <Carte>
@@ -87,6 +101,8 @@ function AdminDashboard() {
               );
             })}
           </Carte>
+
+          
         </div>
 
         <div className="flex flex-col gap-2 mt-6">

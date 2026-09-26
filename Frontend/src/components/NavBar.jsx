@@ -24,7 +24,7 @@ function NavBar({ titre }) {
 
             <button
                 onClick={seDeconnecter}
-                className="text-sm text-[#888780] border border-[#D3D1C7] rounded-lg px-4 py-2"
+                className="text-sm text-[#fffffddb] border  bg-[#e16a43] border-[#D3D1C7] rounded-lg px-4 py-2"
             >
                 Déconnexion
             </button>

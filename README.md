@@ -49,6 +49,12 @@ La plateforme permet notamment de :
 
 ------------------------------------------------------------------------
 
+##  Modèle de données
+
+[Diagramme entité-relation E-Bourse](Docs/Erd.png)
+[Diagramme uml ](Docs/Uml.png)
+[Diagramme cas d'utilisation](Docs/UseCase.png)
+
 ## 2. Technologies utilisées
 
 ### Backend

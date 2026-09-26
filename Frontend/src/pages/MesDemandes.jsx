@@ -72,7 +72,7 @@ function MesDemandes(){
 
                 <button
                     onClick={function () { navigate('/dashboard'); }}
-                    className="text-sm text-[#888780] mb-6"
+                    className="text-sm bg-amber-500 text-[#141412] mb-6"
                     >
                     Retour au tableau de bord
                 </button>

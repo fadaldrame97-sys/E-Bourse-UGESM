@@ -86,14 +86,18 @@ class DemandeBourseService{
 
     return $demande;
 }    
- public function genererNumeroDossier(){
-            
-            $totaleDossiers=DemandeBourse::count();
+public function genererNumeroDossier()
+{
+    $dernier = DemandeBourse::orderBy('id', 'desc')->first();
 
-            $numero=$totaleDossiers +1;
-
-            return 'EB-' . str_pad($numero,5,'0',STR_PAD_LEFT);
+    if ($dernier) {
+        $numero = intval(substr($dernier->numero_dossier, 3)) + 1;
+    } else {
+        $numero = 1;
     }
+
+    return 'EB-' . str_pad($numero, 5, '0', STR_PAD_LEFT);
+}
 
     public function mesDemandes(){
 

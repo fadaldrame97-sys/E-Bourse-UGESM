@@ -123,7 +123,7 @@ function DashboardEtudiant(){
 
           <button
                   onClick={function () { navigate('/notifications'); }}
-                  className="w-full mt-2 border border-[#D3D1C7] rounded-lg py-2.5 text-sm font-semibold text-[#2C2C2A]"
+                   className="mt-4 w-full bg-[#D85A30] text-[#FAECE7] rounded-lg py-2.5 text-sm font-semibold"
                 >
                   Mes notifications
           </button>

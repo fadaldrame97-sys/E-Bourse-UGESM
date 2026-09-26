@@ -6,7 +6,7 @@ function BoutonRetour({ vers }) {
   return (
     <button
       onClick={function () { navigate(vers); }}
-      className="text-sm text-[#060604] "
+      className="text-sm bg-[#D85A30] text-[#060604] "
     >
       Retour au tableau de bord
     </button>

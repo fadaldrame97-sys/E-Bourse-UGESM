@@ -96,14 +96,27 @@ public function __construct(NotificationService $notificationService){
             ->get();
     }
 
+  
+
     public function valider($id){
+        $user = Auth::user();
+        $admin = $user->admin;
+
+        if (!$admin) {
+            throw new Exception('Seul un admin peut valider un billet retour.');
+        }
+
+        if (!$admin->isValidateur() && !$admin->isSuperAdmin()) {
+            throw new Exception('Vous n\'avez pas la permission de valider un billet retour.');
+        }
+
         $billet = BilletRetour::findOrFail($id);
 
         $billet->statut = 'validee';
         $billet->date_validation = now();
         $billet->save();
 
-         $etudiant = $billet->etudiant;
+        $etudiant = $billet->etudiant;
 
         $this->notificationService->creer(
             $etudiant->id,
@@ -116,6 +129,17 @@ public function __construct(NotificationService $notificationService){
     }
 
     public function rejeter($id, $commentaire){
+        $user = Auth::user();
+        $admin = $user->admin;
+
+        if (!$admin) {
+            throw new Exception('Seul un admin peut rejeter un billet retour.');
+        }
+
+        if (!$admin->isValidateur() && !$admin->isSuperAdmin()) {
+            throw new Exception('Vous n\'avez pas la permission de rejeter un billet retour.');
+        }
+
         $billet = BilletRetour::findOrFail($id);
 
         $billet->statut = 'refusee';

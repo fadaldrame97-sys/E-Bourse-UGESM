@@ -24,16 +24,8 @@ class EtudiantController
     ]);
 }
 
-    public function destroy($id){
-        $etudiant = Etudiant::findOrFail($id);
-        $user = $etudiant->user;
-
-        $etudiant->delete();
-
-        if ($user) {
-            $user->delete();
-        }
-
-        return response()->json(['message' => 'Compte étudiant supprimé.']);
-    }
+public function destroy($id){
+    $this->etudiantService->supprimerCompte($id);
+    return response()->json(['message' => 'Compte étudiant supprimé.']);
+}
 }
